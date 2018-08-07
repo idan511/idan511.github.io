@@ -3,6 +3,7 @@
 - make structure
 ## Current release
 #### features
+- site exists
 - https work
 #### fixes
 ---
