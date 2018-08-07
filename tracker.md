@@ -2,13 +2,10 @@
 ## TODO
 - make structure
 ## Current release
+### 0.0.1
 ```
-0.0.1
-features
 + site exists
-+ https work
-
-fixes
++ https works
 ```
 ---
 ## Past releases
