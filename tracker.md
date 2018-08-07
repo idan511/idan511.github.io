@@ -1,8 +1,8 @@
 # Project tracker
-======
+## TODO
+-make structure
 ## Current release
 ### features
 ### fixes
-### bugs
 ---
 ## Past releases
