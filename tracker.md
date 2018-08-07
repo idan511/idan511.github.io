@@ -5,7 +5,7 @@
 ### 0.1.0
 ```
 + added title
-
++ added push workflow
 ```
 ---
 ## Past releases
