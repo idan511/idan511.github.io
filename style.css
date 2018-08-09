@@ -8,16 +8,20 @@ body, html {
 .title {
 	font-family:ColorTube;
 	width:80vw;
-	position:fixed;
-	top:0px;
-	right:0px;
-	text-align: right;
+	text-align: center;
 }
 .title>div:first-child {
 	font-size:10vh;
 }
 .title>div:last-child {
 	font-size:4vh;
+}
+.panel {
+	display:grid;
+	width:100vw;
+	height:100vh;
+	justify-content:center;
+	align-items:center;
 }
 menu {
 	position:fixed;
@@ -36,8 +40,10 @@ menu {
 	justify-content:center;
 	align-items:center;
 	font-size:4vh;
+
+	display: none;
 }
-menu>a {
+/*menu>a {
 	padding:1vh 0px 1vh 0px;
 	display:block;
 	text-decoration: none;
@@ -50,4 +56,4 @@ menu>a:hover {
 }
 menu>a:active {
 	background-color: #95a5a633;
-}
+}*/
