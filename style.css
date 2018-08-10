@@ -2,8 +2,8 @@ body, html {
 	margin:0px;
 	padding:0px;
 	direction: rtl;
-	background-color:#ecf0f1;
-	color:#2d3436;
+	background-color:#2d3436;
+	color:#ecf0f1;
 }
 .title {
 	font-family:ColorTube;
@@ -13,8 +13,17 @@ body, html {
 .title>div:first-child {
 	font-size:10vh;
 }
+.title>div:first-child>img {
+	width:calc(100px + 50vw);
+}
 .title>div:last-child {
-	font-size:4vh;
+	font-size:3vmin;
+	animation:fadein 2s 2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+	opacity:0;
+}
+@keyframes fadein {
+	0% {opacity:0;}
+	100% {opacity:1;}
 }
 .panel {
 	display:grid;
@@ -26,34 +35,42 @@ body, html {
 menu {
 	position:fixed;
 	left:0px;
-	top:0px;
-	width:20vw;
+	bottom:0px;
+	width:100vw;
 	min-width: 320px;
-	background-color:#ecf0f155;
+	/*background-color:#ecf0f155;*/
 	-webkit-backdrop-filter: blur(20px);
-	height:100vh;
+	height:30vh;
 	margin:0px;
 	padding:0px;
-	box-shadow: 10px 0px 20px 0px;
+	/*box-shadow: 10px 0px 20px 0px;*/
 	display:flex;
-	flex-direction:column;
-	justify-content:center;
+	flex-direction:row;
+	justify-content:space-around;
 	align-items:center;
 	font-size:4vh;
+	font-family:sf pro text;
 
-	display: none;
+	/*display: none;*/
 }
-/*menu>a {
+menu>a {
 	padding:1vh 0px 1vh 0px;
-	display:block;
+	display:inline-block;
 	text-decoration: none;
-	width:90%;
+	/*width:90%;*/
+	padding: 10px 30px 10px 30px;
 	text-align: center;
 	cursor: pointer;
+	color:#ecf0f1;
+	background-color: #bdc3c733;
+	border-radius: 30px;
+}
+menu>a:not([href]) {
+	display:none;
 }
 menu>a:hover {
-	background-color: #bdc3c733;
+	background-color: #95a5a633;
 }
 menu>a:active {
 	background-color: #95a5a633;
-}*/
+}
