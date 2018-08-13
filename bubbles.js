@@ -60,7 +60,7 @@ function setup() {
     }
   }
   //calculate ms per bubble
-  abRate = 200000/canvas.width
+  abRate = 800000/canvas.width
   //abRateL.innerHTML = abRate.value+'ms'
 }
 
@@ -301,25 +301,8 @@ function toggleAutoBubble(test) {
 setup();
 animate();
 toggleAutoBubble(true);
-canvas.focus();
+setTimeout(function(){
+abRate /= 4;
+toggleAutoBubble(true);
+},2800);
 
-
-//fps calculator
-const times = [];
-let fps;
-
-function refreshLoop() {
-  window.requestAnimationFrame(() => {
-    const now = performance.now();
-    while (times.length > 0 && times[0] <= now - 1000) {
-      times.shift();
-    }
-    times.push(now);
-    fps = times.length;
-    fpsmeterM.value = fps;
-    fpsmeterT.innerText = fps;
-    refreshLoop();
-  });
-}
-
-refreshLoop()
