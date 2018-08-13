@@ -38,25 +38,38 @@ var f = 0; //friction (very dangerous!!)
 var vLimit = 200; //velocity limit
 var vDecay = 0.9; // velocity decay
 var position = "bottom";
-var dots = canvas.width/10; //no. of physics points (less is faster) OR type canvas.width for true size
-var screenRatio = canvas.width/(dots+1);
+var dots = function() {return canvas.width/10;}; //no. of physics points (less is faster) OR type canvas.width for true size
+var screenRatio = function() {return canvas.width/(dots()+1);};
 var bubbleRealeseThreshold = 2; //at this velocity bubbles will be released
 var animation; // <- probably should delete this
-var botDprHeight = canvas.height / dpr;
-var baseline = botDprHeight / 10; //base height
+var botDprHeight = function() {return canvas.height / dpr;};
+var baseline = function() {return botDprHeight() / 10;}; //base height
 var abRate;
+var ogWidth = canvas.width;
+
+window.addEventListener('resize', function(e) {
+  if(ogWidth<canvas.width) {
+    setup();
+    toggleAutoBubble(false);
+    abRate /= 5.5;
+    toggleAutoBubble(true);
+    ogWidth = canvas.width;
+  }
+});
 
 const lines = [];
 const particles = [];
 
 function setup() {
   //fill line array
-  for(var i=0;i<=dots;i++) {
-    lines[i] = {
-      x: baseline,  //position
-      v: 0,         //velocity
-      constForce: 0,//magic constant force
-      constX: null  //even morw magic fixed position (currently unused)
+  for(var i=0;i<=dots()+1;i++) {
+    if(lines[i] == null) {
+      lines[i] = {
+        x: baseline(),  //position
+        v: 0,         //velocity
+        constForce: 0,//magic constant force
+        constX: null  //even morw magic fixed position (currently unused)
+      }
     }
   }
   //calculate ms per bubble
@@ -70,7 +83,7 @@ function newParticle(size, ex) {
     v: {spd: 0, dir: 0}, // TODO: add physics to bubbles
     a: {acc: 0, dir: 0}, // TODO: "   "       "  "
     x: ex,        // x coordinate
-    y: baseline,  // y coordinate
+    y: baseline(),  // y coordinate
     o: 0, //TODO: animate opacity
     phase: 0
     /*
@@ -81,6 +94,10 @@ function newParticle(size, ex) {
 }
 
 function animate() {
+  //set sizes
+  canvas.width = window.innerWidth * dpr;
+  canvas.height = window.innerHeight * dpr;
+
   c.clearRect(0,0,canvas.width,canvas.height)
 
   c.beginPath();
@@ -100,9 +117,9 @@ function animate() {
   */
   for(var i=0;i<lines.length;i++) {
     if(lines[i].constX == null) {
-      lF = nk * ((i > 0 ? lines[i-1].x : baseline) - lines[i].x)
-      rF = nk * ((i < lines.length-1 ? lines[i+1].x : baseline) - lines[i].x)
-      tF = (baseline - lines[i].x)*bk + lF + rF + lines[i].constForce;
+      lF = nk * ((i > 0 ? lines[i-1].x : baseline()) - lines[i].x)
+      rF = nk * ((i < lines.length-1 ? lines[i+1].x : baseline()) - lines[i].x)
+      tF = (baseline() - lines[i].x)*bk + lF + rF + lines[i].constForce;
       fF = lines[i].v == 0 ? 0 : ((lines[i].v > 0 ? -1 : 1)*f*lines[i].v*lines[i].v);
       tF += fF;
       a = tF/m;
@@ -121,7 +138,7 @@ function animate() {
         c.moveToDpr(0, 0);
         break;
       case "bottom":
-        c.moveToDpr(0,botDprHeight)
+        c.moveToDpr(0,botDprHeight())
         break;
   }
   for(var i=0;i<lines.length;i++) {
@@ -136,7 +153,7 @@ function animate() {
         break;
         case "bottom":
           //c.moveToDpr(i,canvas.height);
-          c.lineToDpr(i,botDprHeight - lines[i].x)
+          c.lineToDpr(i,botDprHeight() - lines[i].x)
         break;
       }
     } else {
@@ -145,22 +162,22 @@ function animate() {
           if(i==0) {
             c.lineToDpr(i, lines[i].x);
           } else if(i<lines.length - 2) {
-            var xc = ((i + i+1) / 2)*screenRatio;
+            var xc = ((i + i+1) / 2)*screenRatio();
             var yc = (lines[i].x + lines[i + 1].x) / 2;
-            c.quadraticCurveToDpr(i*screenRatio, lines[i].x, xc, yc);
+            c.quadraticCurveToDpr(i*screenRatio(), lines[i].x, xc, yc);
           } else {
-            c.quadraticCurveToDpr((lines.length-2)*screenRatio, lines[lines.length-2].x, (lines.length)*screenRatio,lines[lines.length-1].x);
+            c.quadraticCurveToDpr((lines.length-2)*screenRatio(), lines[lines.length-2].x, (lines.length)*screenRatio(),lines[lines.length-1].x);
           }
         break;
         case "bottom":
           if(i==0) {
-            c.lineToDpr(i, botDprHeight - lines[i].x);
+            c.lineToDpr(i, botDprHeight() - lines[i].x);
           } else if(i<lines.length - 2) {
-            var xc = ((i + i+1) / 2)*screenRatio;
+            var xc = ((i + i+1) / 2)*screenRatio();
             var yc = (lines[i].x + lines[i + 1].x) / 2;
-            c.quadraticCurveToDpr(i*screenRatio, botDprHeight - lines[i].x, xc, botDprHeight - yc);
+            c.quadraticCurveToDpr(i*screenRatio(), botDprHeight() - lines[i].x, xc, botDprHeight() - yc);
           } else {
-            c.quadraticCurveToDpr((lines.length-2)*screenRatio, botDprHeight - lines[lines.length-2].x, (lines.length)*screenRatio,botDprHeight - lines[lines.length-1].x);
+            c.quadraticCurveToDpr((lines.length-2)*screenRatio(), botDprHeight() - lines[lines.length-2].x, (lines.length)*screenRatio(),botDprHeight() - lines[lines.length-1].x);
           }
         break;
       }
@@ -173,8 +190,8 @@ function animate() {
       c.lineToDpr(0,0)
       break;
     case "bottom":
-      c.lineToDpr(canvas.width,botDprHeight)
-      c.lineToDpr(0,botDprHeight)
+      c.lineToDpr(canvas.width,botDprHeight())
+      c.lineToDpr(0,botDprHeight())
       break;
   }
   
@@ -206,12 +223,12 @@ function animate() {
     if(particles[i] != null) {// <- making sure if we didn't remove the last particle in the array
       switch(position) {
         case "top":
-          c.moveToDpr((particles[i].x)*screenRatio,(particles[i].y - particles[i].size));
-          c.arcDpr((particles[i].x)*screenRatio,(particles[i].y - particles[i].size),particles[i].size/2,0,2*Math.PI);
+          c.moveToDpr((particles[i].x)*screenRatio(),(particles[i].y - particles[i].size));
+          c.arcDpr((particles[i].x)*screenRatio(),(particles[i].y - particles[i].size),particles[i].size/2,0,2*Math.PI);
           break;
         case "bottom":
-          c.moveToDpr((particles[i].x)*screenRatio,(botDprHeight - (particles[i].y - particles[i].size)));
-          c.arcDpr((particles[i].x)*screenRatio,(botDprHeight - (particles[i].y - particles[i].size)),particles[i].size/2,0,2*Math.PI);
+          c.moveToDpr((particles[i].x)*screenRatio(),(botDprHeight() - (particles[i].y - particles[i].size)));
+          c.arcDpr((particles[i].x)*screenRatio(),(botDprHeight() - (particles[i].y - particles[i].size)),particles[i].size/2,0,2*Math.PI);
           break;
       }
     }
@@ -268,30 +285,11 @@ function blowBubble(ex, size, time, cc, bubble) {
   }
 }
 
-function sploosh(ex, size) {
-  //make a small sploosh
-  for(var i=ex-size;i<=ex+size;i++) {
-    lines[i].constForce = -15;
-  }
-  setTimeout(ksploosh,100,ex,size)
-}
-function ksploosh(ex, size) {
-  //could probably make it one function but whatever
-  for(var i=ex-size;i<=ex+size;i++) {
-    lines[i].constForce = 0;
-  }
-}
-
-function upda() {
-  //set a line's constForce to a constant (bubbles and splooshes will overwrite this)
-  for(var i=20;i<=20;i++) {
-  lines[1*ssss.value].constForce = 1*sss.value;
-  }
-}
 
 var abInterval;
 function toggleAutoBubble(test) {
   if(test) {
+    console.log(abRate)
     abInterval = setInterval(randbub, abRate);
   } else {
     clearInterval(abInterval);
@@ -302,7 +300,8 @@ setup();
 animate();
 toggleAutoBubble(true);
 setTimeout(function(){
-abRate /= 4;
+abRate /= 5.5;
+toggleAutoBubble(false);
 toggleAutoBubble(true);
 },2800);
 
