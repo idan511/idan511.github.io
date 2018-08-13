@@ -1,4 +1,4 @@
-var canvas = document.getElementById("canvaas");
+var canvas = document.getElementById("bgcanvas");
 
 // Get the device pixel ratio, falling back to 1.
 var dpr = window.devicePixelRatio || 1;
@@ -44,6 +44,7 @@ var bubbleRealeseThreshold = 2; //at this velocity bubbles will be released
 var animation; // <- probably should delete this
 var botDprHeight = canvas.height / dpr;
 var baseline = botDprHeight / 10; //base height
+var abRate;
 
 const lines = [];
 const particles = [];
@@ -59,8 +60,8 @@ function setup() {
     }
   }
   //calculate ms per bubble
-  abRate.value = 150000/canvas.width
-  abRateL.innerHTML = abRate.value+'ms'
+  abRate = 200000/canvas.width
+  //abRateL.innerHTML = abRate.value+'ms'
 }
 
 function newParticle(size, ex) {
@@ -291,7 +292,7 @@ function upda() {
 var abInterval;
 function toggleAutoBubble(test) {
   if(test) {
-    abInterval = setInterval(randbub, document.getElementById("abRate").value);
+    abInterval = setInterval(randbub, abRate);
   } else {
     clearInterval(abInterval);
   }

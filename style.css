@@ -2,7 +2,8 @@ body, html {
 	margin:0px;
 	padding:0px;
 	direction: rtl;
-	background-color:#2d3436;
+	/*background-color:#2d3436;*/
+	background-color:#000;
 	color:#ecf0f1;
 }
 .title {
@@ -32,6 +33,15 @@ body, html {
 	justify-content:center;
 	align-items:center;
 }
+.panels, #bgcanvas {
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+#bgcanvas {
+	width:100vw;
+	height:100vh;
+}
 menu {
 	position:fixed;
 	left:0px;
@@ -51,7 +61,7 @@ menu {
 	font-size:4vh;
 	font-family:sf pro text;
 
-	/*display: none;*/
+	display: none;
 }
 menu>a {
 	padding:1vh 0px 1vh 0px;
