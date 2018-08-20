@@ -1,3 +1,11 @@
+:root {
+	--main-bg-color: #511a93;
+	--secondary-bg-color: #000000;
+	--off-white: #ecf0f1;
+	--off-black: #2d3436;
+	--panel-bg-color: #ecf0f1;
+}
+
 body, html {
 	margin:0px;
 	padding:0px;
@@ -45,27 +53,52 @@ body, html {
 	height:100vh;
 	justify-content:center;
 	align-items:center;
+	flex-direction:column;
+	clip-path: polygon(0% 10vh, 100% 0%, 100% calc(100% - 10vh), 0% 100%);
+	-webkit-clip-path: polygon(0% 10vh, 100% 0%, 100% calc(100% - 10vh), 0% 100%);
+}
+.panel:nth-child(2) {
+	clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 10vh), 0% 100%);
+	-webkit-clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 10vh), 0% 100%);
+}
+.panel:nth-last-child(2) {
+	clip-path: polygon(0% 10vh, 100% 0%, 100% calc(100% - 10vh), 0% 100%);
+	-webkit-clip-path: polygon(0% 10vh, 100% 0%, 100% 100%, 0% 100%);
 }
 #aboutMe.panel {
-	background-color: #ecf0f1;
 	height:auto;
 	width:100vw;
 	box-sizing: border-box;
 	padding-bottom:15vh;
 	padding-right:15vw;
 	padding-left:50vw;
-	clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 10vh), 0% 100%);
-	-webkit-clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 10vh), 0% 100%);
+	background-color: var(--panel-bg-color);
+	
 }
 #portfolio.panel {
-	clip-path: polygon(0% 10vh, 100% 0%, 100% calc(100% - 10vh), 0% 100%);
-	-webkit-clip-path: polygon(0% 10vh, 100% 0%, 100% calc(100% - 10vh), 0% 100%);
-	background-color: #ecf0f1;
+	padding: 15vh 15vw 15vh 15vw;
+	box-sizing: border-box;
 	margin-top: 25vh;
+	height:auto;
+	background-color: var(--panel-bg-color);
+}
+#portfolio.panel>div {
+	width:100%;
+}
+.gallery {
+	width:100%;
+}
+.gallery>div, .gallery>div>img {
+	height:20vh;
+	padding:10px;
+}
+.gallery>div:nth-child(odd)>img {
+	float:right;
+}
+.gallery>div:nth-child(even)>img {
+	float:left;
 }
 #projects.panel {
-	clip-path: polygon(0% 10vh, 100% 0%, 100% calc(100% - 10vh), 0% 100%);
-	-webkit-clip-path: polygon(0% 10vh, 100% 0%, 100% 100%, 0% 100%);
 	background-color: #ecf0f1;
 	margin-top: 25vh;
 	box-shadow: 0px 0px 20px 10px #00000055;
@@ -79,22 +112,22 @@ body, html {
 	margin-bottom: 150px;
 }
 body {
-	background: linear-gradient(#000000 1%, rgba(45, 14, 81, 1) 59.24%);
+	background: linear-gradient(var(--secondary-bg-color) 10%, var(--main-bg-color) 100%);
 	background-repeat: no-repeat;
     background-attachment: fixed;
 }
 #bgcanvas {
 	width:100vw;
 	height:100vh;
-	box-shadow: 0px 0px 20px 10px white;
-	background: linear-gradient(to bottom, #000000 1%,#511a93 100%);
+	/*box-shadow: 0px 0px 20px 10px white;*/
+	/*background: linear-gradient(to bottom, #000000 1%,var(--main-bg-color) 100%);*/
 }
 footer {
 	/*position:fixed;
 	bottom:0px;
 	left:0px;*/
 	width:100vw;
-	background-color:rgb(182,185,186);
+	background-color:#0000003a;;
 	height:150px;
 	display: grid;
 	grid-template-columns: 1fr 398.5px;

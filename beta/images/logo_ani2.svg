@@ -321,7 +321,7 @@
 </g>
 <style data-made-with="vivus-instant">
 	.h2{
-		animation:fadein 500ms ease-in-out 2645ms forwards;
+		animation:fadein 500ms ease-in-out 2900ms forwards;
 		opacity:0;
 	}
 	/*.bTitle {

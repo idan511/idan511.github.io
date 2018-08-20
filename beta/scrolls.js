@@ -4,20 +4,30 @@ const formulas = {
 	inverse_linear: "1 - x",
 	logistic: function(x0,l,k) {return l + "/(1+Math.pow(Math.e,(-" + k + "*(x-" + x0 + "))))";}
 };
-obj.addItem = function(object, property, unit, formula) {
+obj.addItem = function(object, property, unit, formula, position) {
 	obj.push({
 		object: object,
 		property: property,
 		unit: unit,
-		formula: formula
+		formula: formula,
+		position: position
 	});
 }
-obj.addItem(document.getElementById("bigTitle"), "opacity", "", "1-3*x")
-obj.addItem(document.getElementById("bigTitle"), "y", "vh", "-25*x")
+obj.addItem(document.getElementById("bigTitle"), "opacity", "", "1-3*x", 0)
+obj.addItem(document.getElementById("bigTitle"), "y", "vh", "-25*x", 0)
+obj.addItem(document.getElementById("aboutmearticle"), "opacity", "", "2.7+3*x", 1)
+//obj.addItem(document.getElementById("portfolio"), "opacity", "", "2.8+3*x", 1)
+//obj.addItem(document.getElementById("projects"), "opacity", "", "2.8+3*x", 1)
 window.addEventListener('scroll', function(e) {
-
-	var x = document.body.scrollTop / window.innerHeight
 	obj.forEach(function(item) {
+		var x;
+		if(item.position==1) {
+			x = (document.body.scrollTop - item.object.offsetTop) / window.innerHeight;
+		} else {
+			x = document.body.scrollTop / window.innerHeight;
+		}
+		
+		//console.log(item.object.id + ": " + item.object.offsetTop)
 		if(item.property=="opacity") {
 			item.object.style.opacity = eval(item.formula);
 		}
@@ -46,5 +56,4 @@ window.addEventListener('scroll', function(e) {
 			}
 		}
 	});
-  
 });

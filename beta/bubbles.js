@@ -292,9 +292,10 @@ function blowBubble(ex, size, time, cc, bubble) {
 var abInterval;
 function toggleAutoBubble(test) {
   if(test) {
-    console.log(abRate)
+    console.log("Autobubble started with rate of " + Math.round(1000/abRate) + "b/s")
     abInterval = setInterval(randbub, abRate);
   } else {
+    console.log("Autobubble stopped")
     clearInterval(abInterval);
   }
 }
@@ -318,11 +319,11 @@ function toggleAnimation(toggle) {
 window.addEventListener('scroll', function() {
   if(document.body.scrollTop > canvas.height) {
     if(bubble_animation_toggle) {
-      console.log(toggleAnimation(false))
+      console.log("Bubble animation: " + toggleAnimation(false))
       toggleAutoBubble(false)
     }
   } else if(bubble_animation_toggle!=true){
-    console.log(toggleAnimation(true))
+    console.log("Bubble animation: " + toggleAnimation(true))
     toggleAutoBubble(true)
   }
 });
