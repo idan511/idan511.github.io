@@ -56,4 +56,13 @@ window.addEventListener('scroll', function(e) {
 			}
 		}
 	});
+	if(document.body.scrollTop / window.innerHeight > 0.18) {
+		document.getElementById("menu").style.backgroundColor = "";
+		document.getElementById("menu").style.boxShadow = "";
+		document.body.style.background = ""
+	} else {
+		document.getElementById("menu").style.backgroundColor = "rgba(0,0,0,0)";
+		document.getElementById("menu").style.boxShadow = "none";
+		document.body.style.background = "black"
+	}
 });

@@ -1,0 +1,540 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,200);
+@import url(SanFranciscoFont/usesf.css);
+body, html {
+	margin:0px;
+	height:100%;
+}
+* {
+	-webkit-overflow-scrolling: touch;
+}
+header {
+	font-size: 20vh;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 200;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+	background-color: #3498db;
+	top:0px;
+	right:100vw;
+	color:#ecf0f1;
+	z-index: 3;
+}
+.flex {
+	display:flex;
+}
+.dataTbl {
+	display:none;
+	max-width:80%;
+	background-color: #ecf0f1;
+	box-shadow: 0px 10px 7px 4px rgb(20,20,20);
+	margin: 5vh auto 5vh auto;
+	font-family: 'San Francisco Display', sans-serif;
+	border-collapse: collapse;
+}
+.dataTbl>tr:nth-child(odd), .dark {
+	background-color: #bdc3c7;
+}
+.tblH {
+	position: -webkit-sticky;
+	top:0px;
+	background-color: #e67e22;
+	color:#ecf0f1;
+}
+.dataTbl th {
+	padding:5px 15px 5px 15px;
+}
+.dataTbl td {
+	padding:1px 15px 1px 15px;
+}
+.lite {background-color: #ecf0f1;}
+.dark, .lite {
+	text-align:center;
+}
+.loader-meter {
+	font-size: 3vh;
+	width:calc(14em + 10vw);
+	-webkit-appearance: none;
+	margin-top: 4vh;
+}
+.loader-meter::-webkit-meter-bar {
+    background: #ecf0f1;
+    border: 2px solid #ecf0f1;
+}
+.loader-meter::-webkit-meter-optimum-value {
+    background: #2ecc71;
+}
+.card {
+	width:100vw;
+	height:100%;
+	position:fixed;
+	transform: translateX(100vw);
+	transition: transform 1s cubic-bezier(.5,0,.3,1);
+}
+.main {
+	top:0px;
+	left:0px;
+	font-family: 'San Francisco Display', sans-serif;
+	font-weight: 500;
+	letter-spacing: 1px;
+	box-shadow: -5px 0px 20px #1F1F21;
+	z-index: 2;
+	background-color: #ecf0f1;
+	overflow: hidden;
+}
+.main[data-state="disbld"] {
+	transform: translateX(350pt) !important;
+	-webkit-filter: brightness(0.9) grayscale(0.9);
+}
+menu {
+	margin:0px;
+	width:100vw;
+	font-size: 20px;
+	background-color: #2c3e50;
+	/*box-shadow: 0px 5px 5px #888888;*/
+	padding:0px;
+	overflow-x: auto;
+	overflow-y: hidden;
+	position: -webkit-sticky;
+	top: 0px;
+	transition: box-shadow 0.4s;
+}
+menu::-webkit-scrollbar {
+    display:none;
+}
+.tabButts {
+	flex:1;
+	cursor: pointer;
+}
+menu>.label {
+	color:#ecf0f1;
+	padding: 20px 0px 20px 0px;
+	min-width:-webkit-fit-content;
+	position:absolute;
+	top:0px;
+	cursor: pointer;
+}
+.bgCont {
+	position:absolute;
+	top:0px;
+	left:128px;
+	width:calc(100vw - 128px);
+	display:flex;
+	height:64px;
+	transition:transform 0.5s;
+	transform-origin: left center;
+}
+.tableViewButt {
+	transition: opacity 0.5s;
+	opacity:0;
+}
+.homeButt {
+	left:calc(12.5vw + 84.035px);
+	animation: homeButtIN 0.5s;
+}
+.mstrButt {
+	left:calc(37.5vw + 47.029px);
+	animation: mstrButtIN 0.5s;
+}
+.ipopButt {
+	left:calc(62.5vw - 19.527px);
+	animation: ipopButtIN 0.5s;
+}
+.massButt {
+	left:calc(87.5vw - 8.793px);
+	animation: massButtIN 0.5s;
+}
+.on>.homeButt {
+	left:calc(12.5vw + 140.04px);
+	animation: homeButtOUT 0.5s;
+}
+.on>.mstrButt {
+	left:calc(37.5vw + 87.029px);
+	animation: mstrButtOUT 0.5s;
+}
+.on>.ipopButt {
+	left:calc(62.5vw + 4.4727px);
+	animation: ipopButtOUT 0.5s;
+}
+.on>.massButt {
+	left:calc(87.5vw - 0.793px);
+	animation: massButtOUT 0.5s;
+}
+.on>.tableViewButt {
+	opacity:1;
+}
+.on>.bgCont {
+	transform:translateX(64px) scaleX(0.9642857143);
+}
+@keyframes homeButtOUT {
+  from {
+    transform:translateX(-56.005px);
+  }
+}
+@keyframes mstrButtOUT {
+  from {
+    transform:translateX(-40px);
+  }
+}
+@keyframes ipopButtOUT {
+  from {
+    transform:translateX(-23.9997px);
+  }
+}
+@keyframes massButtOUT {
+  from {
+    transform:translateX(-8px);
+  }
+}
+@keyframes homeButtIN {
+  from {
+    transform:translateX(56.005px);
+  }
+}
+@keyframes mstrButtIN {
+  from {
+    transform:translateX(40px);
+  }
+}
+@keyframes ipopButtIN {
+  from {
+    transform:translateX(23.9997px);
+  }
+}
+@keyframes massButtIN {
+  from {
+    transform:translateX(8px);
+  }
+}
+@keyframes flash {
+  from {
+    background-color: rgba(236,230,241,0.1);
+  } 
+  to {
+  	background-color: rgba(236,230,241,0);
+  }
+}
+.tabButts:hover {
+	background-color: rgba(236,230,241,0.1);
+}
+.burger {
+	min-width:64px;
+	height:64px;
+	cursor: pointer;
+	background-color: #2c3e50;
+	display:block;
+}
+.closer {
+	width:100vw;
+	height:100vh;
+	position: absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+aside {
+	width:350pt;
+	height:100%;
+	position:fixed;
+	left:0px;
+	top:0px;
+	background-color: #34495e;
+	color:#ecf0f1;
+	padding: 40px;
+	box-sizing: border-box;
+	font-family: 'San Francisco Display', sans-serif;
+	font-weight: 200;
+	overflow-y:auto;
+	display:none;
+}
+.ash {
+	font-size: 50px;
+}
+aside>hr {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+.loggers {
+	font-size: 30px;
+	font-weight: 300;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+input[type="text"], input[type="number"], input[type="date"] {
+	background: none;
+	color:#ecf0f1;
+	font-family: 'San Francisco Display', sans-serif;
+	border:none;
+	box-sizing: border-box;
+	width:100%;
+}
+.loggers:nth-last-child(2) {
+	width:calc(100% - 64px);
+	vertical-align: top;
+}
+.logUnit {
+	font-size: 30px;
+	font-weight: 300;
+}
+.dataUnit {
+	font-size: 25px;
+	font-weight: 300;
+	line-height:190%;
+}
+.profilicForm {
+	line-height:61px;
+}
+.prolificButt {
+	font-size:25px;
+	background: none;
+	font-family: 'San Francisco Display', sans-serif;
+	color:#ecf0f1;
+	border:none;
+	margin: 18px auto 0px auto;
+	padding: 12px 10px 12px 10px;
+	cursor: pointer;
+	display:block;
+}
+select {
+	width: -webkit-min-content !important;
+	background: none;
+	-webkit-appearance: none;
+	color:#ecf0f1;
+	font-family: 'San Francisco Display', sans-serif;
+	border:none;
+}
+.datePick>input {
+	flex:1;
+}
+.datePick>div>input {
+	text-align:center;
+	width: auto;
+}
+.logButts {
+	-webkit-appearance: none;
+	border: none;
+	background: none;
+	margin:0px;
+	padding: 0px;
+	cursor: pointer;
+}
+.vals {
+	position:absolute;
+	top:64px;
+	left:0px;
+	background-color: #ecf0f1;
+	display:flex;
+	width: 75px;
+	height:calc(100% - 124px);
+	flex-direction:column;
+	color: rgb(50,50,50);
+	font-family: Avenir Next;
+	/*font-weight: 300;*/
+	/*border-right: solid 1px #a7a7a7;*/
+	font-size:14px;
+	/*-webkit-backdrop-filter:blur(15px);*/
+}
+.valsval {
+	flex:1;
+	display:flex;
+	align-items:center;
+	justify-content: flex-end;
+	margin-left:20px;
+	margin-right:10px;
+}
+.valsvalk {
+	flex:0.5;
+}
+.cancon {
+	overflow-x: auto;
+	overflow-y: hidden;
+	width:100vw;
+	height:calc(100vh - 64px);
+}
+.graphs {
+	padding-left:75px;
+}
+.tabs {
+	width:100vw;
+	height:calc(100% - 64px);
+	display:none;
+	color:#7f8c8d;
+	transition:-webkit-filter 0.4s, transform 0.4s;
+}
+.radioTabs, .radioPanel>input {
+	display:none;
+}
+.radioTabs:checked+.tabs, .radioTabs:checked+aside {
+	display:block;
+}
+.radioTabs:checked+.dataTbl {
+	display: table;
+}
+.headofhome {
+	font-family: 'San Francisco Display', sans-serif;
+	font-weight: 200;
+	font-size:10vh;
+}
+.homeTab {
+	width:100%;
+	height:100%;
+	padding:5vh;
+	box-sizing: border-box;
+	font-size:25px;
+	overflow: hidden;
+	overflow-y: auto;
+}
+#calRing {
+	float:right;
+}
+.profiles {
+	flex:1;
+	margin-left: 3px;
+	text-align: right;
+}
+.notifications {
+	position: fixed;
+	/*top:95vh;*/
+	bottom:5vh;
+	left:5vh;
+	z-index:5;
+	overflow: visible;
+}
+.notifications>div {
+	transition:transform .4s, opacity .4s;
+}
+.notifications>div>div {
+	width: 250pt;
+	background-color: rgba(50,50,50,0.8);
+	background-repeat: no-repeat;
+	background-size: 40px 40px;
+	margin-bottom:5px;
+	font-family: 'San Francisco Display', sans-serif;
+	font-size: 20px;
+	color:#ecf0f1;
+	padding-left: 60px;
+	background-position: 10.75px center;
+	cursor: pointer;
+	overflow: visible;
+	box-sizing: border-box;
+	line-height: 64px;
+}
+.notifications>div>div[data-type="load"] {
+	background-image: url(img/loader.svg);
+	background-position: 13px center;
+}
+.notifications>div>div[data-type="fail"] {
+	background-image: url(img/fail.svg);
+}
+.notifications>div>div[data-type="good"] {
+	background-image: url(img/good.svg);
+}
+.notifications>div>div[data-type="info"] {
+	background-image: url(img/info.svg);
+}
+.notifications>div[data-isclosing="true"] {
+	transform:scale(0.9);
+	opacity:0;
+}
+.footnote {
+	font-weight: 400;
+}
+footer {
+	text-align: center;
+}
+.tableView {
+	width:100vw;
+	height:calc(100vh - 64px);
+	position:absolute;
+	top:64px;
+	left:0px;
+	background:rgba(44, 62, 80,0.1);
+	transition: transform 0.4s, opacity 0.4s, -webkit-filter 0.4s;
+	overflow: scroll;
+	transform:scale(1.05);
+	opacity:0;
+	-webkit-filter:blur(5px);
+	display: none;
+}
+.tableViewTrue {
+	transform:scale(1);
+	opacity:1;
+	-webkit-filter:blur(0px);
+}
+.blur {
+	-webkit-filter:blur(5px);
+	transform:scale(1.03);
+}
+.controls {
+	display:flex;
+	align-items:center;
+}
+.radioPanel {
+	width:-webkit-fit-content;
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+}
+.radioPanel>label {
+	width:-webkit-fit-content;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-style: solid;
+	border-width: 2px;
+	border-color:rgb(0,122,255);
+	padding:5px;
+	margin-bottom: 10px;
+	text-align:center;
+	flex-grow:1;
+	font-size:16px;
+	color:rgb(0,122,255);
+	transition:color 0.2s, background 0.2s;
+	border-left:none;
+	cursor:pointer;
+}
+.radioPanel>label:nth-child(2) {
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-left:solid 2px rgb(0,122,255);
+}
+.radioPanel>label:last-child {
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+.radioPanel>input:checked+label{
+	background-color:rgb(0,122,255);
+	color:white;
+}
+@media screen and (max-aspect-ratio: 504/605) {
+	.homeTab {
+		text-align: center;
+	}
+	#calRing {
+		float:none;
+	}
+}
+@media all and (max-width: 422.222pt) { 
+	.main[data-state="disbld"] {
+		transform: translateX(calc(90vw - 30pt)) !important;
+		-webkit-filter: brightness(0.9) grayscale(0.9);
+	}
+	aside {
+		width:calc(90vw - 30pt);
+		padding: 3vh;
+	}
+	aside>hr {
+		margin-top: 3vh;
+		margin-bottom: 3vh;
+	}
+	.logUnit, .loggers {
+		font-size: 3vh;
+	}
+	.dataUnit {
+		font-size: 2.5vh;
+	}
+	.profilicForm {
+		line-height: 6.1vh;
+	}
+}

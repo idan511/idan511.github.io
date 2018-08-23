@@ -32,7 +32,7 @@ var pos_bar_lock = false;
 const scroll_duration = 1;
 
 for(let i=0;i<as.length;i++) {
-  if(as[i].hash!=null) {
+  if(as[i].hash!=null && as[i].hash!="") {
     as[i].onclick = function(event) {
       event.preventDefault();
       let target = document.getElementsByName(as[i].hash.substring(1,as[i].hash.length))[0];

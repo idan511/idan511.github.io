@@ -1,0 +1,279 @@
+body, html {
+	height: 100%;
+	width: 100%;
+	direction:rtl;
+	margin: 0px;
+	overflow:hidden;
+	font-family:arial;
+	background: black url(bg3.jpg);
+	background-position:left bottom;
+	background-size:100% 16%;
+	background-repeat:repeat-x;
+	-webkit-user-select: none;
+}
+body>* {
+	position: fixed;
+}
+#table {
+	height: 100%;
+	width: 100%;
+	
+	-webkit-transform: scale(0.85,0.85);
+	transition: all 2s;
+	overflow:visible;
+}
+#liltable {
+	table-layout:fixed;
+	height: 100%;
+	width: 100%;
+	border-spacing:15px;
+	-webkit-box-reflect: below  -29px -webkit-gradient(linear, left top, left bottom,  color-stop(90%,rgba(151,93,47,0)), color-stop(100%,rgba(151,93,47,0.3)));
+	transition: all 2s;
+}
+.btr {height: 33.33%;transition: all 2s;table-layout:fixed;}
+.btd {
+	table-layout:fixed;
+	width: 25%;
+	overflow:hidden;
+	background: white;
+	transition: all 0.7s;
+	vertical-align:bottom;
+	-webkit-filter: opacity(0);
+	cursor:pointer;
+	border: none;
+}
+.btr:nth-child(1)>td{background: none;}
+.btd>div {
+	align-self: center;
+	text-align: center;
+	font-size: 50px;
+	color: white;
+	overflow:hidden;
+	opacity: 0;
+	transition: all 0.7s;
+}
+#header {
+	top:-webkit-calc(20% - 150px);
+	width: 100%;
+	text-align:center;
+	font-size: 200px;
+	color:#FC0;
+	text-shadow:4px 4px 8px blue;
+	opacity: 1;
+	cursor:default;
+	-webkit-animation: load 2s ease-out 0s;-webkit-animation-fill-mode: forwards;
+}
+.btd#insta {
+	background: url(icons/insta.png), radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+	/*background: rgb(237,29,36), url(icons/cal.png);*/
+	background-repeat:no-repeat, no-repeat;
+	background-position:center center;
+	background-size:auto 42%, cover;
+	-webkit-animation: load 2s ease-out 1.5s;-webkit-animation-fill-mode: forwards;
+}
+#insta:hover {background-position:center 35%;}
+#insta:hover>div {
+	opacity: 1;
+	margin-bottom: 12%;
+}
+dav {
+	display:block;
+	color:white;
+	padding-right:5px;
+	padding-top: 2px;
+	font-size: 24px;
+	margin-bottom: -2px;
+	width: 100%;
+	background: -moz-linear-gradient(top,  rgba(151,93,47,0) 0%, rgba(151,93,47,1) 100%); /* FF3.6+ */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(151,93,47,0)), color-stop(100%,rgba(151,93,47,1))); /* Chrome,Safari4+ */
+
+background: -webkit-linear-gradient(top,  rgba(151,93,47,0) 0%,rgba(151,93,47,1) 100%); /* Chrome10+,Safari5.1+ */
+
+background: -o-linear-gradient(top,  rgba(151,93,47,0) 0%,rgba(151,93,47,1) 100%); /* Opera 11.10+ */
+
+background: -ms-linear-gradient(top,  rgba(151,93,47,0) 0%,rgba(151,93,47,1) 100%); /* IE10+ */
+
+background: linear-gradient(to bottom,  rgba(151,93,47,0) 0%,rgba(151,93,47,1) 100%); /* W3C */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#975D2F', endColorstr='#975D2F',GradientType=0 ); /* IE6-9 */
+}
+#instafeed {display:none;}
+bg {
+	position:absolute;
+	display:block;
+	top: 0px;
+	right: 0px;
+	height: 85%;
+	width: 100%;
+	background: url(bgC.jpg);
+	background-position:center middle;
+	background-size:100% 100%;
+	background-repeat:repeat-x;
+	transition: all 2s;
+	-webkit-animation: shine 2s linear 0s infinite alternate;
+}
+@-webkit-keyframes shine
+{
+	from {
+		-webkit-filter: brightness(0.9);
+	}
+	to   {
+		-webkit-filter: brightness(1.2);
+	}
+}
+#cal {
+	background: rgb(237,29,36) url(icons/cal.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:auto 42%;
+	-webkit-animation: load 2s ease-out 1.7s;-webkit-animation-fill-mode: forwards;
+}
+#cal:hover {background-position:center 35%;}
+#cal:hover>div {
+	opacity: 1;
+	margin-bottom: 12%;
+}
+#forum {
+	background: rgb(142,0,149) url(icons/forum.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:auto 42%;
+	-webkit-animation: load 2s ease-out 2.1s;-webkit-animation-fill-mode: forwards;
+}
+#forumgay {
+	background: rgb(142,0,149) url(icons/forum.png);
+	background-repeat:no-repeat;
+	background-position:10px 10px;
+	background-size:auto 10%;
+}
+#forum:hover {background-position:center 35%;}
+#forum:hover>div {
+	opacity: 1;
+	margin-bottom: 12%;
+}
+#mail {
+	background: rgb(28,169,233) url(icons/mail.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:auto 42%;
+	-webkit-animation: load 2s ease-out 2.5s;-webkit-animation-fill-mode: forwards;
+}
+#antimail {background: rgb(28,169,233);}
+#mail:hover {background-position:center 35%;}
+#mail:hover>div {
+	opacity: 1;
+	margin-bottom: 12%;
+}
+#parent {
+	background: rgb(238,35,106) url(icons/parent.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:auto 42%;
+	-webkit-animation: load 2s ease-out 2.9s;-webkit-animation-fill-mode: forwards;
+}
+#parent:hover {background-position:center 35%;}
+#parent:hover>div {
+	opacity: 1;
+	margin-bottom: 12%;
+}
+#big {
+	background: rgb(0,140,23) url(icons/tie.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:auto 35%;
+	-webkit-animation: load 2s ease-out 2.7s;-webkit-animation-fill-mode: forwards;
+}
+#biggay {
+	background: rgb(0,140,23) url(icons/tie.png);
+	background-repeat:no-repeat;
+	background-position: center 1%;
+	background-size:auto 10%;
+}
+#big:hover {background-position:center 35%;}
+#big:hover>div {
+	opacity: 1;
+	margin-bottom: 12%;
+}
+#lil {
+	background: rgb(255,194,14) url(icons/tie.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:auto 35%;
+	-webkit-animation: load 2s ease-out 2.3s;-webkit-animation-fill-mode: forwards;
+}
+#lilgay {
+	background: rgb(255,194,14) url(icons/tie.png);
+	background-repeat:no-repeat;
+	background-position: center 1%;
+	background-size:auto 10%;
+}
+#lil:hover {background-position:center 35%;}
+#lil:hover>div {
+	opacity: 1;
+	margin-bottom: 12%;
+}
+#fb {
+	background: rgb(60,90,149) url(icons/fb.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:auto 42%;
+	-webkit-animation: load 2s ease-out 1.9s;-webkit-animation-fill-mode: forwards;
+}
+#fb:hover {background-position:center 35%;}
+#fb:hover>div {
+	opacity: 1;
+	margin-bottom: 12%;
+}
+@-webkit-keyframes load
+{
+	from {
+		-webkit-filter: opacity(0);
+	}
+	to   {
+		-webkit-filter: opacity(1);
+	}
+}
+content#contact {
+	display:block;
+	width: 100%;
+	height: 100%;
+	cursor: default;
+	color: white;
+	font-size:36px;
+	padding: 5px;
+	overflow:scroll;
+}
+butt{display:none;}
+#contact img {
+	float: right;
+	margin-left: 6px;
+}
+#contact small {
+	font-size:24px;
+}
+#contact tel {
+	font-size: 28px;
+}
+close {
+	float: left;
+	margin-left: 10px;
+	margin-top: -10px;
+	padding: 3px;
+	cursor: pointer;
+}
+close:hover {
+	background:rgba(255,255,255,0.2);
+}
+#instagay {
+	background:#975D2F;
+}
+gay {
+	display: block;
+	top: -100%;
+	width: 100%;
+	height: 100%;
+	transition: top 0.5s;
+	border: none;
+	overflow: scroll;
+}

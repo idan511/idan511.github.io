@@ -1,98 +1,110 @@
 <!DOCTYPE HTML>
 <html lang="he">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, minimal-ui">
-    <meta name="viewport" content="initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimal-ui">
+	<meta name="viewport" content="initial-scale=1.0">
 
-    <title>עידן הלפרין - מפתח, מעצב</title>
-    
-    <link rel="canonical" href="https://idanalper.in">
-    <link rel="stylesheet" href="style.css">
+	<title>עידן הלפרין - מפתח, מעצב</title>
+	
+	<link rel="canonical" href="https://idanalper.in">
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Assistant" rel="stylesheet">
   </head>
   <body>
-    <canvas id="bgcanvas"></canvas>
-    <div class="panels">
-      <div class="panel" id="homePanel" name="home">
-        <div class="title" id="bigTitle">
-          <img src="images/logo_ani2.svg">
-        </div>
-        </div>
-        <div class="panel" name="aboutMe" id="aboutMe">
-            <article id="aboutmearticle">
-                <h1>עלי...</h1>
-                <p>
-                    לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש. תרבנך וסתעד לכנו סתשם השמה - לתכי מורגם בורק? לתיג ישבעס.
-                </p><p>
-                    צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו בלוקריה שיצמה ברורק. קוואזי במר מודוף אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו בלוקריה שיצמה ברורק.
-                </p>
-            </article>
-        </div>
-        <div class="panel" name="portfolio" id="portfolio">
-            <div>
-                <h1>תיק עבודות</h1>
-            </div>
-            <div class="gallery">
-                <div>
-                    <img src="http://animals.sandiegozoo.org/sites/default/files/2016-11/animals_hero_giraffe_1_0.jpg">
-                    <h2>
-                        TRKR
-                    </h2>
-                    <article>
-                        יומן מזון ומשקל עם
-                    </article>
-                </div>
-                <div>
-                    <img src="http://animals.sandiegozoo.org/sites/default/files/2016-11/animals_hero_giraffe_1_0.jpg">
-                    <h2>
-                        TRKR
-                    </h2>
-                    <article>
-                        יומן מזון ומשקל עם
-                    </article>
-                </div>
-                <div>
-                    <img src="http://animals.sandiegozoo.org/sites/default/files/2016-11/animals_hero_giraffe_1_0.jpg">
-                    <h2>
-                        TRKR
-                    </h2>
-                    <article>
-                        יומן מזון ומשקל עם
-                    </article>
-                </div>
-            </div>
-            <a class="morelink">
-                כל הפרוייקטים >
-            </a>
-        </div>
-        <!--<div class="panel" name="projects" id="projects">
-            <div>
-                <h1>פרוייקטים</h1>
-            </div>
-        </div>-->
-        <footer>
-            <div id="footerlinks">
-                <a href="idans_resume.pdf" target="_blank">קורות חיים</a>
-            </div>
-            <img src="images/footer_logo.svg">
-            <div id="copyright">
-                &copy; 2018, עידן הלפרין
-            </div>
-        </footer>
-    </div>
-    
-    <menu>
-        <a class="posbarMenuItem" href="#home">בית</a>
-        <a class="posbarMenuItem" href="#aboutMe">אודות</a>
-        <a class="posbarMenuItem" href="#portfolio">תיק עבודות</a>
-        <!--<a class="posbarMenuItem" href="#projects">פרוייקטים</a>-->
-        <!--<a href="idans_resume.pdf" target="_blank">קורות חיים</a>-->
-        <!--<a href="https://codepen.io/Idan511/" target="_blank">CODEPEN</a>-->
-    </menu>
-    <script type="text/javascript" src="bubbles.js"></script>
-    <script type="text/javascript" src="scrolls.js"></script>
-    <script type="text/javascript" src="fps_counter.js"></script>
-    <script type="text/javascript" src="smooth_scrolls.js"></script>
+	<canvas id="bgcanvas"></canvas>
+	<div class="panels">
+	  <div class="panel" id="homePanel" name="homePanel">
+		<div class="title" id="bigTitle">
+		  <img src="images/logo_ani2.svg">
+		</div>
+		<menu id="menu">
+			<a class="posbarMenuItem" href="#homePanel">בית</a>
+			<a class="posbarMenuItem" href="#aboutMe">אודות</a>
+			<a class="posbarMenuItem" href="#portfolio">תיק עבודות</a>
+			<!--<a class="posbarMenuItem" href="#projects">פרוייקטים</a>-->
+			<!--<a href="idans_resume.pdf" target="_blank">קורות חיים</a>-->
+			<!--<a href="https://codepen.io/Idan511/" target="_blank">CODEPEN</a>-->
+		</menu>
+		</div>
+		<div class="panel regpanel" name="aboutMe" id="aboutMe">
+			<article id="aboutmearticle">
+				<h1>עלי...</h1>
+				<p>
+					לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש. תרבנך וסתעד לכנו סתשם השמה - לתכי מורגם בורק? לתיג ישבעס.
+				</p><p>
+					צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו בלוקריה שיצמה ברורק. קוואזי במר מודוף אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו בלוקריה שיצמה ברורק.
+				</p>
+			</article>
+		</div>
+		<div class="panel regpanel" name="portfolio" id="portfolio">
+			<div>
+				<h1>תיק עבודות</h1>
+			</div>
+			<div class="gallery">
+				<a>
+					<img src="http://animals.sandiegozoo.org/sites/default/files/2016-11/animals_hero_giraffe_1_0.jpg">
+					<h2>
+						TRKR
+					</h2>
+					<article>
+						יומן מזון ומשקל עם
+					</article>
+				</a>
+				<a>
+					<img src="http://animals.sandiegozoo.org/sites/default/files/2016-11/animals_hero_giraffe_1_0.jpg">
+					<h2>
+						TRKR
+					</h2>
+					<article>
+						יומן מזון ומשקל עם
+					</article>
+				</a>
+				<a>
+					<img src="http://animals.sandiegozoo.org/sites/default/files/2016-11/animals_hero_giraffe_1_0.jpg">
+					<h2>
+						TRKR
+					</h2>
+					<article>
+						יומן מזון ומשקל עם
+					</article>
+				</a>
+			</div>
+			<a class="morelink" href="portfolio/index.html">
+				כל הפרוייקטים >
+			</a>
+		</div>
+		<!--<div class="panel" name="projects" id="projects">
+			<div>
+				<h1>פרוייקטים</h1>
+			</div>
+		</div>-->
+		<div class="panel regpanel" id="contactme">
+			<div class="contact">
+				<span>דוא״ל: <a href="mailto:idanalper@gmail.com">idanalper@gmail.com</a></span>
+				<span>טלפון: <a href="tel:052-566-9724">052-566-9724</a></span>
+				<!--<span><a href="idans_resume.pdf" target="_blank">קורות חיים</a></span>-->
+			</div>
+			<div class="contact">
+				<a href="https://codepen.io/Idan511/" target="_blank"><img src="images/codepen-logo2.svg"></a>
+				<a href="https://github.com/idan511" target="_blank"><img src="images/GitHub-logo.svg"></a>
+				<a><img src="images/linkedin-logo.svg"></a>
+			</div>
+		</div>
+		<footer>
+			<div id="footerlinks">
+				<a href="idans_resume.pdf" target="_blank">קורות חיים</a>
+			</div>
+			<img src="images/footer_logo.svg">
+			<div id="copyright">
+				&copy; 2018, עידן הלפרין
+			</div>
+		</footer>
+	</div>
+	<script type="text/javascript" src="bubbles.js"></script>
+	<script type="text/javascript" src="scrolls.js"></script>
+	<script type="text/javascript" src="fps_counter.js"></script>
+	<script type="text/javascript" src="smooth_scrolls.js"></script>
 
 
   </body>

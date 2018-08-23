@@ -1,10 +1,11 @@
 :root {
-	--main-r:81;
-	--main-g:26;
-	--main-b:147;
-	--main-bg-color: rgb(var(--main-r),var(--main-g),var(--main-b));
+	--main-h:267;
+	--main-s:69.9%;
+	--main-l:33.9%;
+	--main-bg-color: hsl(var(--main-h),var(--main-s),var(--main-l));
 	--secondary-bg-color: #000000;
-	--menu-bg-color: rgba(var(--main-r),var(--main-g),var(--main-b),0.3);
+	--menu-bg-color: hsla(var(--main-h),var(--main-s),calc(var(--main-l) - 10%),0.4);
+	--menu-bg-scolor: hsla(var(--main-h),var(--main-s),calc(var(--main-l) - 20%),0.3);
 	--off-white: #ecf0f1;
 	--off-black: #2d3436;
 	--panel-bg-color: #ecf0f1;
@@ -14,10 +15,12 @@ body, html {
 	margin:0px;
 	padding:0px;
 	direction: rtl;
-	/*background-color:#2d3436;*/
+	background-color:var(--main-bg-color);
 	/*background-color:#000;*/
 	color:#2d3436;
-	font-family:sf pro text;
+	/*font-family: 'Rubik', sans-serif;
+	font-family: 'Heebo', sans-serif;*/
+	font-family: 'Assistant', sans-serif;
 	font-size: 20px;
 }
 .title {
@@ -70,21 +73,23 @@ body, html {
 	-webkit-clip-path: polygon(0% 10vh, 100% 0%, 100% 100%, 0% 100%);
 }*/
 #aboutMe.panel {
-	height:auto;
-	width:100vw;
 	box-sizing: border-box;
-	padding-bottom:15vh;
-	padding-right:15vw;
-	padding-left:50vw;
+	padding:0px 15vw 15vh 50vw;
+}
+.regpanel {
+	height:auto;
 	background-color: var(--panel-bg-color);
+	box-shadow: 0px 20px 30px 0px #00000055;
+	box-sizing: border-box;
+	padding: 15vh 15vw 15vh 15vw;
+}
+.regpanel:not(:nth-child(2)) {
+	margin-top: 25vh;
+}
+.regpanel:nth-child(2) {
 	box-shadow: 0px 30px 30px 0px #00000055;
 }
-#portfolio.panel {
-	padding: 15vh 15vw 15vh 15vw;
-	box-sizing: border-box;
-	margin-top: 25vh;
-	height:auto;
-	background-color: var(--panel-bg-color);
+.regpanel:nth-last-child(2) {
 	box-shadow: 0px 10px 30px 0px #00000055;
 }
 #portfolio.panel>div {
@@ -93,24 +98,28 @@ body, html {
 .gallery {
 	width:100%;
 }
-.gallery>div>img {
+.gallery>a>img {
 	height:20vh;
 	max-width: 100%;
 }
-.gallery>div {
+.gallery>a {
 	box-shadow: 0px 5px 10px 0px #00000055;
 	padding:20px;
 	margin-bottom: 7vh;
 	min-height:20vh;
+	display: block;
+	color:inherit;
+	text-decoration: none;
+	cursor: pointer;
 }
-.gallery>div>h2 {
+.gallery>a>h2 {
 	margin-top: 0px;
 }
-.gallery>div:nth-child(odd)>img {
+.gallery>a:nth-child(odd)>img {
 	float:right;
 	margin-left:15px;
 }
-.gallery>div:nth-child(even)>img {
+.gallery>a:nth-child(even)>img {
 	float:left;
 	margin-right:15px;
 }
@@ -124,9 +133,19 @@ body, html {
 	align-self: flex-end;
 	color:#0070c9;
 	cursor: pointer;
+	text-decoration: none;
 }
-.morelink:hover {
+body.panel.regpanel {
+	padding:0px 5vw 0px 5vw;
+	max-width: 1400px;
+	margin:5vh auto 5vh auto;
+	box-shadow: 0px 10px 30px 20px #00000055;
+}
+.morelink:hover, .contact>span>a:hover, .regA:hover {
 	text-decoration: underline;
+}
+.morelink:active, .contact>span>a:active, .regA:active {
+	color:#005394;
 }
 .panels, #bgcanvas {
 	position:absolute;
@@ -135,6 +154,44 @@ body, html {
 	width: 100vw;
 	z-index:1;
 	margin-bottom: 150px;
+}
+.contact>span>a, .regA {
+	color:#0070c9;
+	cursor: pointer;
+	text-decoration: none;
+}
+.contact {
+	flex:1;
+	display: flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+}
+.contact:first-child {
+	flex:3;
+}
+.contact>span {
+	flex:1;
+	min-width: 300px;
+	font-size: 24px;
+}
+.contact>a>img {
+	height:8vh;
+	min-height: 64px;
+	transition:transform 0.3s;
+}
+.contact>a>img:hover {
+	transform:scale(1.05);
+}
+.contact>a>img:active {
+	transform:scale(0.85);
+}
+.contact>a {
+	flex:1;
+}
+#contactme.panel {
+	display: flex;
+	flex-direction:row;
+	flex-wrap:wrap;
 }
 body {
 	/*background: linear-gradient(var(--secondary-bg-color) 10%, var(--main-bg-color) 100%);*/
@@ -214,8 +271,9 @@ menu {
 	font-size: 30px;
 	margin:0px;
 	padding:0px;
-	box-shadow: 0px 0px 20px 10px var(--menu-bg-color);
+	box-shadow: 0px 0px 20px 10px var(--menu-bg-scolor);
 	z-index: 2;
+	transition: background-color 0.2s;
 }
 menu>a {
 	display: flex;
@@ -226,7 +284,7 @@ menu>a {
 	cursor: pointer;
 	color:#ecf0f1;
 	text-decoration:none;
-	transition:background 0.2s;
+	transition:background 0.3s;
 	padding-left:2vw;
 	padding-right:2vw;
 	/*background: linear-gradient(to bottom, rgba(236,240,241,0) 20%,rgba(236,240,241,0) 100%);*/

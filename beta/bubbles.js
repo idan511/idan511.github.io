@@ -332,8 +332,10 @@ setup();
 animate();
 toggleAutoBubble(true);
 setTimeout(function(){
-abRate /= 5.5;
-toggleAutoBubble(false);
-toggleAutoBubble(true);
+  abRate /= 5.5;
+  if(bubble_animation_toggle==true) {
+    toggleAutoBubble(false);
+    toggleAutoBubble(true);
+  }
 },2800);
 

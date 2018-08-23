@@ -1,14 +1,13 @@
-const as = document.getElementsByTagName('a');
+const as = document.querySelectorAll('a.posbarMenuItem');
 var pos_bar_lock = false;
 const scroll_duration = 1;
-
 for(let i=0;i<as.length;i++) {
-  if(as[i].hash!=null) {
+  if(as[i].hash!=null && as[i].hash!="") {
     as[i].onclick = function(event) {
       event.preventDefault();
       let target = document.getElementsByName(as[i].hash.substring(1,as[i].hash.length))[0];
       pos_bar_lock = true;
-      updateScrollBar(i, scroll_duration) 
+      updateScrollBar(i+1, scroll_duration) 
       scrollTo(target.offsetTop - 100, scroll_duration*1000, as[i].hash);   
       target.focus();
       return false;
@@ -71,7 +70,7 @@ function setup() {
   console.log(points)
   //set posbar
   pos_bar.style.position = "fixed";
-  pos_bar.style.top = (buttons[0].getBoundingClientRect().bottom - 5) + "px";
+  pos_bar.style.top = (buttons[0].getBoundingClientRect().bottom - 2) + "px";
   pos_bar.style.left = points[0].x + "px";
   pos_bar.style.height = "2px";
   pos_bar.style.width = points[0].width + "px";
@@ -100,10 +99,11 @@ function updateScrollBar(pos, posbar_dur) {
       i++;
     }
   }
+  console.log("sector: " + i)
   if(document.body.scrollTop < 0 || i<=1) {
     pos_bar.style.transform = "translateX(0px) scaleX(1)"
     pos_bar.style.opacity = "0";
-  } else if(i >= 4) {
+  } else if(i >= 3) {
     pos_bar.style.opacity = "1";
     pos_bar.style.transform = "translateX(" + (points[points.length-1].x - points[0].x) + "px) scaleX(" + (points[points.length-1].width / points[0].width) + ")"
   } else {

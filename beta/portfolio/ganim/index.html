@@ -1,0 +1,78 @@
+<!doctype html>
+<html manifest="cache.appcache" lang="he">
+    <head>
+    	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+        <meta name="description" content="האתר הרשמי של שבט גנים">
+		<meta name="keywords" content="שבט, גנים,צופים,ישראל,צהוב,כחול,אימפריה,גני,תקווה,דן">
+		<meta name="author" content="Idan Alperin">
+        <title>שבט גנים</title>
+        <link rel="stylesheet" type="text/css" href="default.css">
+        <link rel="stylesheet" type="text/css" media="all and (orientation: portrait)" href="mobile.css">
+        <script src="instafeed.min.js"></script>
+        <script src="script.js"></script>
+    </head>
+    <body id="body" onLoad="getn();setInterval(function(){feed.run();getn();},10000);load();"><bg></bg>
+    	<header id="header">שבט גנים</header>
+        <div id="table">
+            <table id="liltable">
+                <tr class="btr">
+                    <td colspan="4" class="btd" style="cursor:default;">
+                    </td>
+                </tr>
+                <tr class="btr">
+                    <td id="lil" class="btd" onClick="openLil();">
+                        <div>פורטל חניכים</div>
+                    </td>
+                    <td id="forum" class="btd" onClick="openForum();">
+                        <div>פורומים</div>
+                    </td>
+                    <td id="cal" class="btd">
+                        <div>
+							                            אירועים
+                        </div>
+                    </td>
+                    <td id="antimail" class="btd" colspan="2" rowspan="2" style="display:none;-webkit-filter: opacity(1);">
+                    	<content id="contact">
+                        	<close onClick="closeMail();">סגור</close>
+                            <img src="http://graph.facebook.com/626319415/picture?height=120&width=120">
+                            <name>שחר גלעדי</name><br>
+                            <tel>סלולרי: <a href="tel:">1234567890</a></tel><br><br>
+							<img src="http://graph.facebook.com/1118610899/picture?height=120&width=120">
+                          	אסף עמיאל<br>
+                            <tel>סלולרי: <a href="tel:">1234567890</a></tel>
+                        </content>
+                    </td>
+                    <td id="mail" onClick="openMail();" class="btd">
+                        <div>צור קשר</div>
+                    </td>
+                    
+                </tr>
+                <tr class="btr">
+                    <td id="big" class="btd" onClick="openBig();">
+                        <div>פורטל שכב"ג</div>
+                    </td>
+                    <td id="insta" class="btd" onClick="window.open('https://www.instagram.com/shevetganim/','_blank');">
+                        <div>אינסטגרם</div>
+                    </td>
+                    <td id="fb" onClick="window.open('https://www.facebook.com/gtcganim','_blank');" class="btd">
+                        <div>פייסבוק</div>
+                    </td>
+                    <td id="parent" onClick="window.open('http://zofim.org.il/magazin_item.asp?item_id=416548904836','_blank');" class="btd">
+                        <div>פורטל הורים</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <butt id="swiper" ontouchstart="swipe();"></butt>
+        <gay id="lilgay"></gay>
+        <gay id="forumgay"></gay>
+        <gay id="biggay"></gay>
+        <gay id="instagay"></gay>
+        <closenigga id="tabclose" onclick="closetabs();" style="display:block;bottom:-5%;right: 47%;width: 6%;height: 5%;background:rgba(193,244,255,0.5);transition: bottom 0.5s;"></closenigga>
+        <x id="instafeed"></x>
+    </body>
+</html>

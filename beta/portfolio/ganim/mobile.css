@@ -1,0 +1,104 @@
+#cal {
+	background: rgb(237,29,36) url(icons/cal.png);
+	background-repeat:no-repeat;
+	background-size:auto 42%;
+	background-position:center 35%;
+	padding-bottom: 3.0%;
+}
+#cal>div {
+	opacity: 1;
+}
+#forum {
+	background: rgb(142,0,149) url(icons/forum.png);
+	background-repeat:no-repeat;
+	background-size:auto 42%;
+	background-position:center 35%;
+	padding-bottom: 3.0%;
+}
+#forum>div {
+	opacity: 1;
+}
+#mail {
+	background: rgb(28,169,233) url(icons/mail.png);
+	background-repeat:no-repeat;
+	background-size:auto 42%;
+	background-position:center 35%;
+	padding-bottom: 3.0%;
+}
+#mail>div {
+	opacity: 1;
+}
+#parent {
+	background: rgb(238,35,106) url(icons/parent.png);
+	background-repeat:no-repeat;
+	background-size:auto 42%;
+	background-position:center 35%;
+	padding-bottom: 3.0%;
+}
+#parent>div {
+	opacity: 1;
+}
+#big {
+	background: rgb(0,140,23) url(icons/tie.png);
+	background-repeat:no-repeat;
+	background-size:auto 35%;
+	background-position:center 35%;
+	padding-bottom: 3.0%;
+}
+#big>div {
+	opacity: 1;
+}
+#lil {
+	background: rgb(255,194,14) url(icons/tie.png);
+	background-repeat:no-repeat;
+	background-size:auto 35%;
+	background-position:center 35%;
+	padding-bottom: 3.0%;
+}
+#lil>div {
+	opacity: 1;
+}
+#fb {
+	background: rgb(60,90,149) url(icons/fb.png);
+	background-repeat:no-repeat;
+	background-size:auto 42%;
+	background-position:center 35%;
+	padding-bottom: 3.0%;
+}
+#fb>div {
+	opacity: 1;
+}
+#table {
+	overflow-x:scroll;
+	overflow:visible;
+}
+#liltable {
+	width: 200%;
+	position:relative;
+}
+butt {
+	display:block;
+	bottom: 0px;
+	left: 0px;
+	width: 10%;
+	height: 100%;
+	background: none;
+}
+content#contact {
+	font-size:90px;
+}
+#contact img {
+	float: right;
+	margin-left: 6px;
+	height:200px;
+	width: 200px;
+}
+#contact small {
+	font-size: 50px;
+}
+#contact tel {
+	font-size: 75px;
+}
+.btd {
+	cursor: default;
+}
