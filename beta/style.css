@@ -11,7 +11,7 @@
 	--panel-bg-color: #ecf0f1;
 }
 @media only screen and (max-width:800px) {
-    #aboutMe.panel.regpanel {
+	#aboutMe.panel.regpanel {
 		padding:0px 15vw 15vh 15vw;
 	}
 	footer>img {
@@ -22,10 +22,10 @@
 		height:auto !important;
 	}
 	#homePanel {
-		height: 75vh !important;
+		height: 80vh !important;
 	}
 	#bgcanvas, #bgcanvasNS {
-		transform: translateY(-15vh);
+		transform: translateY(-10vh);
 	}
 	#footerlinks {
 		grid-column: 1 / 3 !important;
@@ -237,7 +237,7 @@ body {
 	/*background: linear-gradient(var(--secondary-bg-color) 10%, var(--main-bg-color) 100%);*/
 	background: var(--main-bg-color);
 	background-repeat: no-repeat;
-    background-attachment: fixed;
+	background-attachment: fixed;
 }
 #bgcanvas, #bgcanvasNS {
 	width:100vw;
@@ -309,9 +309,9 @@ menu {
 	flex:1;
 	display: flex;
 	position: fixed;
-    top: 0px;
-    left:0px;
-    flex-direction:row;
+	top: 0px;
+	left:0px;
+	flex-direction:row;
 	justify-content:center;
 	align-items:center;
 	width:100vw;
@@ -335,6 +335,8 @@ menu>a {
 	transition:background 0.3s;
 	padding-left:2vw;
 	padding-right:2vw;
+	max-width:160px;
+	flex:1;
 	/*background: linear-gradient(to bottom, rgba(236,240,241,0) 20%,rgba(236,240,241,0) 100%);*/
 }
 /*menu>a:not([href]), menu>a:not([data-href]) {
