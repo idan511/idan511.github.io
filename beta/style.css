@@ -308,7 +308,7 @@ footer>img {
 }
 menu {
 	background-color:var(--menu-bg-color);
-	-webkit-backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(30px);
 	height:75px;
 	flex:1;
 	display: flex;

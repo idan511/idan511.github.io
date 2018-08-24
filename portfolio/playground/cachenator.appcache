@@ -1,0 +1,14 @@
+CACHE MANIFEST
+/playGround/images/FileOpen.png
+/playGround/images/library3.gif
+/playGround/images/loader2.png
+/playGround/images/upload.png
+/playGround/images/loader.gif
+/playGround/libraries/custom_popUps.css
+/playGround/libraries/drag.js
+
+NETWORK:
+*
+
+FALLBACK:
+/ /index.php

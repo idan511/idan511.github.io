@@ -1,0 +1,328 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta name = "viewport" content = "initial-scale = 1, user-scalable = yes"> 
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="pikaday.css">
+	<script type="text/javascript" src="../site/scripts/prefixfree.min.js"></script>
+	<script type="text/javascript" src="../site/scripts/prefixfree.dynamic-dom.min.js"></script>
+	<script type="text/javascript" src="shortcut.js"></script>
+	<script type="text/javascript" src="moment.js"></script>
+	<script src="pikaday.js"></script>
+	<!--<script type="text/javascript" src="rich_calendar/rc_lang_en.js"></script>
+	<script type="text/javascript" src="rich_calendar/rich_calendar.js"></script>-->
+	<script type="text/javascript" src="main.js"></script>
+</head>
+<body>
+	<header class="card" id="loadCard">
+		TRKR
+		<meter min="0" max="100" value="100" class="loader-meter">loading...</meter>
+	</header>
+	<input type="radio" id="profileR" class="radioTabs" name="asideRadioTabs">
+	<aside>
+		<div class="ash">Profile</div>
+		<hr>
+		<form class="logUnit flex profilicForm" id="forenameChangeForm">
+			Forename <input type="text" id="forenameChangeLogger" placeholder="John" class="loggers profiles">
+		</form>
+		<form class="logUnit flex profilicForm" id="surnameChangeForm">
+			Surname <input type="text" id="surnameChangeLogger" placeholder="Cena" class="loggers profiles">
+		</form>
+		<form class="logUnit flex profilicForm" id="birthdayChangeForm">
+			Birthday <input type="text" id="birthdayChangeLogger" class="loggers profiles" readonly="true">
+		</form>
+		<form class="logUnit flex profilicForm" id="emailChangeForm">
+			Email <input type="text" id="emailChangeLogger" placeholder="ayy@lmao.com" class="loggers profiles">
+		</form>
+		<button type="button" class="prolificButt">Change password</button>
+		<hr>
+		<form class="logUnit flex profilicForm" id="goalBMIChangeForm">
+			Goal BMI <input type="text" id="goalBMIChangeLogger" class="loggers profiles">
+		</form>
+		<form class="logUnit flex profilicForm" id="progLenChangeForm">
+			Program Length <input type="text" id="progLenChangeLogger" class="loggers profiles">
+		</form>
+		<hr>
+		<div class="dataUnit flex">Weekly weight goal <span class="profiles" id="wwg"></span></div>
+		<div class="dataUnit flex">Daily weight goal  <span class="profiles" id="dwg"></span></div>
+		<div class="dataUnit flex">Weekly cal goal    <span class="profiles" id="wcg"></span></div>
+		<div class="dataUnit flex">Daily cal Goal     <span class="profiles" id="dcg"></span></div>
+		<br>
+		<span class="footnote">* 1 kilogram ≈ 7700 calories</span>
+		<hr>
+		<footer class="footnote">Created By Idan Alperin © All rights reserved</footer>
+	</aside>
+	<input type="radio" id="loggerR" class="radioTabs" name="asideRadioTabs">
+	<aside>
+		<div class="ash">Logger</div>
+		<hr>
+		<form class="logUnit" id="massLogForm">
+			<input type="number" id="massLogger" placeholder="Log mass" class="loggers" pattern="[0-9]*">
+			<button type="submit" class="logButts">
+				<svg width="57" height="57" xmlns="http://www.w3.org/2000/svg">
+	  				<rect fill="#ecf0f1" stroke="#000000" stroke-width="0" x="24.95192" y="27" width="30.84616" height="3" id="svg_1" rx="1.5" ry="1.5"/>
+	  				<rect fill="#ecf0f1" stroke="#000000" stroke-width="0" x="38.09317" y="20.81589" width="20" height="3" id="svg_2" rx="1.5" ry="1.5" transform="rotate(45 48.0928840637207,22.315887451171875) "/>
+	  				<rect transform="rotate(-45 48.09288024902344,34.68411636352539) " fill="#ecf0f1" stroke="#000000" stroke-width="0" x="38.09317" y="33.18412" width="20" height="3" id="svg_3" rx="1.5" ry="1.5"/>
+				</svg>
+			</button>
+		</form>
+		<hr>
+		<form class="logUnit" id="foodLogForm">
+			
+			<div class="datePick flex">
+				<input type="text" id="foodLogger" placeholder="Food name" class="loggers">
+				<div>
+					<input type="text" placeholder="hh" class="loggers" maxlength="2" size="2" pattern="[0-24]*" id="foodHr">:<input type="text" placeholder="mm" class="loggers" size="2" pattern="[0-59]*" id="foodMn">
+				</div>
+			</div>
+			<input type="text" placeholder="Calories" class="loggers" pattern="[0-9]*" id="foodCalories">
+			<button type="submit" class="logButts">
+				<svg width="57" height="57" xmlns="http://www.w3.org/2000/svg">
+	  				<rect fill="#ecf0f1" stroke="#000000" stroke-width="0" x="24.95192" y="27" width="30.84616" height="3" id="svg_1" rx="1.5" ry="1.5"/>
+	  				<rect fill="#ecf0f1" stroke="#000000" stroke-width="0" x="38.09317" y="20.81589" width="20" height="3" id="svg_2" rx="1.5" ry="1.5" transform="rotate(45 48.0928840637207,22.315887451171875) "/>
+	  				<rect transform="rotate(-45 48.09288024902344,34.68411636352539) " fill="#ecf0f1" stroke="#000000" stroke-width="0" x="38.09317" y="33.18412" width="20" height="3" id="svg_3" rx="1.5" ry="1.5"/>
+				</svg>
+			</button>
+		</form>
+		<hr>
+		<form class="logUnit">
+			<div class="datePick flex">
+				<input type="text" id="activityLogger" placeholder="Activity name" class="loggers">
+				<div>
+					<input type="text" placeholder="hh" class="loggers" maxlength="2" size="2" pattern="[0-9]*" id="actHr">:<input id="actMn" type="text" placeholder="mm" class="loggers" size="2" pattern="[0-9]*">
+				</div>
+			</div>
+			<input type="text" placeholder="Calories burned" class="loggers" pattern="[0-9]*">
+			<button type="submit" class="logButts">
+				<svg width="57" height="57" xmlns="http://www.w3.org/2000/svg">
+	  				<rect fill="#ecf0f1" stroke="#000000" stroke-width="0" x="24.95192" y="27" width="30.84616" height="3" id="svg_1" rx="1.5" ry="1.5"/>
+					<rect fill="#ecf0f1" stroke="#000000" stroke-width="0" x="38.09317" y="20.81589" width="20" height="3" id="svg_2" rx="1.5" ry="1.5" transform="rotate(45 48.0928840637207,22.315887451171875) "/>
+					<rect transform="rotate(-45 48.09288024902344,34.68411636352539) " fill="#ecf0f1" stroke="#000000" stroke-width="0" x="38.09317" y="33.18412" width="20" height="3" id="svg_3" rx="1.5" ry="1.5"/>
+				</svg>
+			</button>
+		</form>
+		<hr>
+		<form class="logUnit">
+			<input type="number" id="heightLogger" placeholder="Log height" class="loggers" pattern="[0-9]*">
+			<button type="submit" class="logButts">
+				<svg width="57" height="57" xmlns="http://www.w3.org/2000/svg">
+	  				<rect fill="#ecf0f1" stroke="#000000" stroke-width="0" x="24.95192" y="27" width="30.84616" height="3" id="svg_1" rx="1.5" ry="1.5"/>
+					<rect fill="#ecf0f1" stroke="#000000" stroke-width="0" x="38.09317" y="20.81589" width="20" height="3" id="svg_2" rx="1.5" ry="1.5" transform="rotate(45 48.0928840637207,22.315887451171875) "/>
+					<rect transform="rotate(-45 48.09288024902344,34.68411636352539) " fill="#ecf0f1" stroke="#000000" stroke-width="0" x="38.09317" y="33.18412" width="20" height="3" id="svg_3" rx="1.5" ry="1.5"/>
+				</svg>
+			</button>
+		</form>
+	</aside>
+	<div class="main card" id="mainCard">
+		<menu id="menu" class="flex">
+			<label class="burger" onclick="openSideBar();" for="loggerR">
+				<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+	  				<rect height="64" width="64" y="0" x="0" stroke-width="0" fill="#2c3e50">
+						<animate id="logFlash" attributeName="fill" attributeType="XML" values="#404F5F; #2c3e50" begin="indefinite" keySplines="0.1 0.8 0.2 1" dur="0.4s" repeatCount="1" />
+					</rect>
+	 				<rect ry="2" rx="2" height="4" width="28" y="30" x="18" stroke-width="0" fill="#ecf0f1"/>
+	  				<rect fill="#ecf0f1" stroke-width="0" x="30" y="18" width="4" height="28" id="svg_1" rx="2" ry="2"/>
+				</svg>
+			</label>
+			<label class="burger" onclick="openSideBar();" for="profileR">
+				<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+					<rect fill="#2c3e50" stroke-width="0" width="64" height="64">
+						<animate id="proFlash1" attributeName="fill" attributeType="XML" values="#404F5F; #2c3e50" begin="indefinite" keySplines="0.1 0.8 0.2 1" dur="0.4s" repeatCount="1" />
+					</rect>
+					<rect stroke="#ecf0f1" ry="2" rx="2" height="13.2689" width="23.01793" y="36.00467" x="20.49103" stroke-width="5" fill="none"/>
+					<circle stroke="#ecf0f1" r="4.56913" cy="24.63445" cx="31.96103" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="4" fill="none"/>
+					<rect ry="2" rx="2" height="12.62666" width="20" y="37.40296" x="22" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="4" fill="#2c3e50">
+						<animate id="proFlash2" attributeName="fill" attributeType="XML" values="#404F5F; #2c3e50" begin="indefinite" keySplines="0.1 0.8 0.2 1" dur="0.4s" repeatCount="1" />
+					</rect>
+					<rect height="9.35308" width="46.53157" y="43.95012" x="10.27903" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="4" fill="#2c3e50">
+						<animate id="proFlash3" attributeName="fill" attributeType="XML" values="#404F5F; #2c3e50" begin="indefinite" keySplines="0.1 0.8 0.2 1" dur="0.4s" repeatCount="1" />
+					</rect>
+					<rect fill="#ecf0f1" stroke-width="0" x="42.00312" y="36.62821" width="4" height="9.37179" rx="2" ry="2"/>
+					<rect fill="#ecf0f1" stroke-width="0" x="17.99688" y="36.62821" width="4" height="9.37179" rx="2" ry="2"/>
+				</svg>
+			</label>
+			<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg" class="burger tableViewButt" id="tableViewButt" onclick="openTableView()" data-mode="false">
+				<rect fill="#2c3e50" stroke-width="0" width="64" height="64">
+					<animate id="tableFlash" attributeName="fill" attributeType="XML" values="#404F5F; #2c3e50" begin="indefinite" keySplines="0.1 0.8 0.2 1" dur="0.4s" repeatCount="1" />
+				</rect>
+			  	<rect ry="2" rx="2" height="3" width="28" y="26" x="18" stroke-width="0" fill="#ecf0f1">
+					<animate id="t2g0" attributeName="rx" attributeType="XML" values="2; 0.5" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g1" attributeName="ry" attributeType="XML" values="2; 0.5" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g2" attributeName="height" attributeType="XML" values="3; 1.5" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g3" attributeName="y" attributeType="XML" values="26; 22.90181" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+				</rect>
+				<rect fill="#ecf0f1" stroke-width="0" x="30.5" y="20.84004" width="3" height="9.33423" id="svg_1" rx="1.5" ry="1.5">
+					<animateTransform id="t2g4" attributeName="transform" type="rotate" attributeType="XML" from="0 40.51025390624999,26.986976623535153" to="36.59886932373047 40.51025390624999,26.986976623535153" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g5" attributeName="x" attributeType="XML" values="30.5; 39.01025" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g6" attributeName="y" attributeType="XML" values="20.84004; 18.76031" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g7" attributeName="height" attributeType="XML" values="9.33423; 16.45334" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+				</rect>
+				<rect ry="2" rx="2" height="2" width="28" y="31.98675" x="18" stroke-width="0" fill="#ecf0f1" id="svg_3">
+					<animate id="t2g8" attributeName="rx" attributeType="XML" values="2; 0.5" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g9" attributeName="ry" attributeType="XML" values="2; 0.5" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g10" attributeName="height" attributeType="XML" values="2; 1.5" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g11" attributeName="y" attributeType="XML" values="31.98675; 29.73636" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+				</rect>
+				<rect ry="2" rx="2" height="2" width="28" y="36.97506" x="18" stroke-width="0" fill="#ecf0f1" id="svg_4">
+					<animate id="t2g12" attributeName="rx" attributeType="XML" values="2; 0.5" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g13" attributeName="ry" attributeType="XML" values="2; 0.5" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g14" attributeName="height" attributeType="XML" values="2; 1.5" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g15" attributeName="y" attributeType="XML" values="36.97506; 36.50962" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+				</rect>
+				<rect ry="2" rx="2" id="svg_5" height="28" width="4" y="18.01893" x="18.01892" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#ecf0f1" fill="#ecf0f1">
+					<animate id="t2g16" attributeName="rx" attributeType="XML" values="2; 1.5" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g17" attributeName="ry" attributeType="XML" values="2; 1.5" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g18" attributeName="width" attributeType="XML" values="4; 3" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+				</rect>
+				<rect id="svg_6" ry="2" rx="2" height="28" width="4" y="18.01893" x="41.99369" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#ecf0f1" fill="#ecf0f1">
+					<animate id="t2g19" attributeName="height" attributeType="XML" values="28; 3" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g20" attributeName="y" attributeType="XML" values="18.01893; 43.07255" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+				</rect>
+				<rect id="svg_7" ry="2" rx="2" height="4" width="28" y="18.01893" x="18" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#ecf0f1" fill="#ecf0f1">
+					<animate id="t2g21" attributeName="width" attributeType="XML" values="28; 3" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+				</rect>
+				<rect  id="svg_8" ry="2" rx="2" height="4" width="28" y="42.07255" x="18" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#ecf0f1" fill="#ecf0f1">
+					<animate id="t2g22" attributeName="rx" attributeType="XML" values="2; 1.5" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g23" attributeName="ry" attributeType="XML" values="2; 1.5" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g24" attributeName="height" attributeType="XML" values="4; 3" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g25" attributeName="y" attributeType="XML" values="42.07255; 43.07255" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+				</rect>
+				<rect id="svg_9" fill="#ecf0f1" stroke-width="0" x="30.5" y="27.64834" width="3" height="9.33423" rx="1.5" ry="1.5">
+					<animateTransform id="t2g26" attributeName="transform" type="rotate" attributeType="XML" from="0 32.358543395996094,30.158100128173828" to="118.7963752746582 32.358543395996094,30.158100128173828" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g27" attributeName="x" attributeType="XML" values="30.5; 30.85854" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g28" attributeName="y" attributeType="XML" values="27.64834; 23.91194" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g29" attributeName="height" attributeType="XML" values="9.33423; 12.49232" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+				</rect>
+				<rect id="svg_10" fill="#ecf0f1" stroke-width="0" x="30.5" y="34.19408" width="3" height="9.33423" rx="1.5" ry="1.5">
+					<animateTransform id="t2g30" attributeName="transform" type="rotate" attributeType="XML" from="0 23.820972442626946,33.06591796875" to="40.36664581298828 23.820972442626946,33.06591796875" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g31" attributeName="x" attributeType="XML" values="30.5; 22.32097" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g32" attributeName="y" attributeType="XML" values="34.19408; 24.9232" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+					<animate id="t2g33" attributeName="height" attributeType="XML" values="9.33423; 16.28543" begin="indefinite" keySplines=".57 .11 .54 1" dur="0.4s" repeatCount="1" fill="freeze" />
+				</rect>
+			</svg>
+			<div class="label homeButt">Home</div>
+			<div class="label mstrButt">Master</div>
+			<div class="label ipopButt">Input / Output</div>
+			<div class="label massButt">Mass</div>
+			<div class="bgCont" id="homebutter">
+				<label class="tabButts" onclick="hideTableViewButt()"   id="homeL"   for="homeR"></label>
+				<label class="tabButts" onclick="revealTableViewButt();iid('tbmasterR').checked=true;" id="masterL" for="masterR"></label>
+				<label class="tabButts" onclick="revealTableViewButt();iid('tbioR').checked=true;"     id="ioL"     for="ioR"></label>
+				<label class="tabButts" onclick="revealTableViewButt();iid('tbmassR').checked=true;"   id="massL"   for="massR"></label>
+			</div>
+		</menu>
+		<input type="radio" id="homeR" class="radioTabs" name="ayylmap" checked>
+		<div class="tabs">
+			<div class="homeTab">
+				<canvas id="calRing"></canvas>
+				<span class="headofhome">Welcome John,</span>
+				<p>
+					Your weight is <span id="massSpan"></span>kg,<br>
+					your height is <span id="heightSpan"></span>m<br>
+					Giving you a BMI of <span id="BMISpan"></span>
+				</p>
+				<p>
+				You have <span id="avaSpan"></span> calories left to spend today.
+				</p>
+			</div>
+		</div>
+		<input type="radio" id="masterR" class="radioTabs" name="ayylmap">
+		<div class="tabs">
+			<div class="cancon" id="cancon"><canvas id="masterGraph" class="graphs"></canvas></div>
+			<div class="vals">
+				<div class="valsvalk"></div>
+				<div class="valsval">82.5</div>
+				<div class="valsval">55</div>
+				<div class="valsval">27.5</div>
+				<div class="valsval">0</div>
+				<div class="valsval">-525</div>
+				<div class="valsval">-1050</div>
+				<div class="valsval">-1575</div>
+				<div class="valsvalk"></div>
+			</div>
+		</div>
+		<input type="radio" id="massR" class="radioTabs" name="ayylmap">
+		<div class="tabs">
+			<div class="cancon" id="cancon">
+				<canvas id="massGraph" class="graphs"></canvas>
+				<div class="controls">
+					<div class="radioPanel">
+						<input type="radio" name="graphZoom" id="mz1">
+						<label for="mz1">Year</label>
+						<input type="radio" name="graphZoom" id="mz2">
+						<label for="mz2">Month</label>
+						<input type="radio" name="graphZoom" id="mz3">
+						<label for="mz3">Day</label>
+					</div>
+					<button>Today</button>
+					<input type="number" placeholder="auto" id="graphMin" min="0">
+					<input type="number" placeholder="auto" id="graphMax" min="0">
+				</div>
+			</div>
+			<div class="vals">
+				<div class="valsvalk"></div>
+				<div class="valsval">90</div>
+				<div class="valsval">60</div>
+				<div class="valsval">30</div>
+				<div class="valsvalk"></div>
+			</div>
+		</div>
+		<input type="radio" id="ioR" class="radioTabs" name="ayylmap">
+		<div class="tabs">
+			io
+		</div>
+		<div class="tableView" id="masterTableView">
+			<input type="radio" id="tbmasterR" class="radioTabs" name="tblR">
+			<table class="dataTbl" id="masterTbl">
+				<tr class="tblH">
+					<th>Date</th>
+					<th>Mass</th>
+					<th>Height</th>
+					<th>Input</th>
+					<th>Activity</th>
+					<th>Output</th>
+					<th>Available</th>
+					<th>Total</th>
+					<th>Weekly Total</th>
+					<th>BMR</th>
+					<th>BMI</th>
+					<th>Goal Mass</th>
+					<th>Goal Diff.</th>
+				</tr>
+			</table>
+			<input type="radio" id="tbmassR" class="radioTabs" name="tblR">
+			<table class="dataTbl" id="massTbl">
+				<tr class="tblH">
+					<th>Time</th>
+					<th>Mass</th>
+					<th>Daily Minimum</th>
+				</tr>
+			</table>
+			<input type="radio" id="tbioR" class="radioTabs" name="tblR">
+			<table class="dataTbl" id="ioTbl">
+				<tr class="tblH">
+					<th colspan="3">
+						Input
+					</th>
+					<th colspan="3">
+						Output
+					</th>
+				</tr>
+				<tr class="tblH">
+					<th>Time</th>
+					<th>Type</th>
+					<th>Calories</th>
+					<th>Time</th>
+					<th>Type</th>
+					<th>Calories</th>
+				</tr>
+			</table>
+		</div>
+		<div class="closer" id="closer" onclick="closeSideBar();"></div>
+	</div>
+	<div class="notifications" id="notifications"></div>
+</body>
+</html>
