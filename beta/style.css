@@ -30,6 +30,9 @@
 	#footerlinks {
 		grid-column: 1 / 3 !important;
 	}
+	footer {
+		grid-template-columns: 1fr auto !important;  
+	}
 }
 @media only screen and (max-height:700px) {
 	menu {
