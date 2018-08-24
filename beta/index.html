@@ -1,15 +1,22 @@
 <!DOCTYPE HTML>
 <html lang="he">
 	<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, minimal-ui">
-	<meta name="viewport" content="initial-scale=1.0">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, minimal-ui">
+		<meta name="viewport" content="initial-scale=1.0">
 
-	<title>עידן הלפרין - מפתח, מעצב</title>
-	
-	<link rel="canonical" href="https://idanalper.in">
-	<link rel="stylesheet" href="style.css">
-	<link href="https://fonts.googleapis.com/css?family=Assistant" rel="stylesheet">
+		<title>עידן הלפרין - מפתח, מעצב</title>
+		
+		<link rel="canonical" href="https://idanalper.in">
+		<link rel="stylesheet" href="style.css">
+		<link href="https://fonts.googleapis.com/css?family=Assistant" rel="stylesheet">
+
+		<script type="text/javascript">
+			window.onload = function() {
+				document.documentElement.style.setProperty('--main-h', randomInt(0,359));
+			}
+			function randomInt(min,max){return Math.floor(Math.random()*(max-min+1)+min);}
+		</script>
 	</head>
 	<body>
 	<canvas id="bgcanvas" style="display:none;"></canvas>
