@@ -56,9 +56,7 @@ const pos_bar = document.createElement("div");
 const transition_time = 0.3
 
 //window.addEventListener('resize',setup)
-
-function setup() {
-  //set points array
+function generateParray() {
   for(let i=0;i<buttons.length;i++) {
     let target = document.getElementsByName(buttons[i].hash.substring(1,buttons[i].hash.length))[0];
     points[i] = {
@@ -67,22 +65,31 @@ function setup() {
       target: target.getBoundingClientRect().top - 100
     }
   }
-  console.log(points)
+  return points;
+}
+function setup() {
+  //console.log(points)
   //set posbar
   pos_bar.style.position = "fixed";
-  pos_bar.style.top = (buttons[0].getBoundingClientRect().bottom - 2) + "px";
-  pos_bar.style.left = points[0].x + "px";
   pos_bar.style.height = "2px";
-  pos_bar.style.width = points[0].width + "px";
   pos_bar.style.background = "#ecf0f1"
   pos_bar.style.transformOrigin = "bottom left";
   pos_bar.style.zIndex = "3"
-  updateScrollBar()
+  setPBDefaultSize()
   setTimeout(function(){pos_bar.style.transition = "transform " + transition_time + "s, opacity " + transition_time + "s";},100)
   document.body.appendChild(pos_bar);
 }
 
+function setPBDefaultSize() {
+  console.log(generateParray())
+  pos_bar.style.top = (buttons[0].getBoundingClientRect().bottom - 2) + "px";
+  pos_bar.style.left = points[0].x + "px";
+  pos_bar.style.width = points[0].width + "px";
+  updateScrollBar()
+}
+
 window.addEventListener('scroll', updateScrollBar);
+window.addEventListener('resize', setPBDefaultSize);
 
 function updateScrollBar(pos, posbar_dur) {
   let i=0;
@@ -99,7 +106,7 @@ function updateScrollBar(pos, posbar_dur) {
       i++;
     }
   }
-  console.log("sector: " + i)
+  //console.log("sector: " + i)
   if(document.body.scrollTop < 0 || i<=1) {
     pos_bar.style.transform = "translateX(0px) scaleX(1)"
     pos_bar.style.opacity = "0";

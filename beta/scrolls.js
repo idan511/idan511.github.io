@@ -16,6 +16,11 @@ obj.addItem = function(object, property, unit, formula, position) {
 obj.addItem(document.getElementById("bigTitle"), "opacity", "", "1-3*x", 0)
 obj.addItem(document.getElementById("bigTitle"), "y", "vh", "-25*x", 0)
 obj.addItem(document.getElementById("aboutmearticle"), "opacity", "", "2.7+3*x", 1)
+obj.addItem(document.getElementById("porfolioh"), "opacity", "", "4+4*x", 1)
+obj.addItem(document.getElementById("apa"), "opacity", "", "4+4*x", 1)
+document.querySelectorAll(".gallery>a, .contact>*").forEach(function(it) {
+	obj.addItem(it, "opacity", "", "3.5+4*x", 1)
+})
 //obj.addItem(document.getElementById("portfolio"), "opacity", "", "2.8+3*x", 1)
 //obj.addItem(document.getElementById("projects"), "opacity", "", "2.8+3*x", 1)
 window.addEventListener('scroll', function(e) {
@@ -66,3 +71,12 @@ window.addEventListener('scroll', function(e) {
 		document.body.style.background = "black"
 	}
 });
+if(document.body.scrollTop / window.innerHeight > 0.18) {
+	document.getElementById("menu").style.backgroundColor = "";
+	document.getElementById("menu").style.boxShadow = "";
+	document.body.style.background = ""
+} else {
+	document.getElementById("menu").style.backgroundColor = "rgba(0,0,0,0)";
+	document.getElementById("menu").style.boxShadow = "none";
+	document.body.style.background = "black"
+}

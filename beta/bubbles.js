@@ -11,6 +11,7 @@ function setupCanvas(can) {
   // size * the device pixel ratio.
   can.width = window.innerWidth * dpr;
   can.height = window.innerHeight * dpr;
+  can.style.display = "";
   var ctx = can.getContext('2d');
   // Scale all drawing operations by the dpr, so you
   // don't have to worry about the difference.
