@@ -3,7 +3,7 @@
 		<script type="text/javascript">
 
 			    window.addEventListener('devicemotion', function () {
-			        tilt([event.acceleration.x * 2, event.acceleration.y * 2], event.acceleration.z * 2]);
+			        tilt([event.acceleration.x * 2, event.acceleration.y * 2, event.acceleration.z * 2]);
 			    }, true);
 
 			function tilt(c) {
