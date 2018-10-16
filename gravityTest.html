@@ -10,6 +10,10 @@
 				xx.innerText = Math.max(c[0],xx.innerText)
 				yy.innerText = Math.max(c[1],yy.innerText)
 				zz.innerText = Math.max(c[2],zz.innerText)
+				if(c[0]>80) {
+					great.currentTime = 0;
+					great.play();
+				}
 			}
 		</script>
 	</head>
@@ -17,5 +21,9 @@
 		x: <span id="xx"></span><br>
 		y: <span id="yy"></span><br>
 		z: <span id="zz"></span>
+		<audio id="great">
+		  <source src="kok.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+		</audio>
 	</body>
 </html>
