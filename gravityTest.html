@@ -7,9 +7,9 @@
 			    }, true);
 
 			function tilt(c) {
-				xx.innerText = c[0]
-				yy.innerText = c[1]
-				zz.innerText = c[2]
+				xx.innerText = Math.max(c[0],xx.innerText)
+				yy.innerText = Math.max(c[1],yy.innerText)
+				zz.innerText = Math.max(c[2],zz.innerText)
 			}
 		</script>
 	</head>
