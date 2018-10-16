@@ -3,17 +3,19 @@
 		<script type="text/javascript">
 
 			    window.addEventListener('devicemotion', function () {
-			        tilt([event.acceleration.x * 2, event.acceleration.y * 2]);
+			        tilt([event.acceleration.x * 2, event.acceleration.y * 2], event.acceleration.z * 2]);
 			    }, true);
 
 			function tilt(c) {
 				xx.innerText = c[0]
 				yy.innerText = c[1]
+				zz.innerText = c[2]
 			}
 		</script>
 	</head>
 	<body>
 		x: <span id="xx"></span><br>
-		y: <span id="yy"></span>
+		y: <span id="yy"></span><br>
+		z: <span id="zz"></span>
 	</body>
 </html>
