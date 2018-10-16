@@ -1,11 +1,11 @@
 <html>
 	<head>
 		<script type="text/javascript">
-
+			function load() {
 			    window.addEventListener('devicemotion', function () {
 			        tilt([event.acceleration.x * 2, event.acceleration.y * 2, event.acceleration.z * 2]);
 			    }, true);
-
+			}
 			function tilt(c) {
 				xx.innerText = Math.max(c[0],xx.innerText)
 				yy.innerText = Math.max(c[1],yy.innerText)
@@ -17,7 +17,7 @@
 			}
 		</script>
 	</head>
-	<body>
+	<body onload="load();">
 		x: <span id="xx"></span><br>
 		y: <span id="yy"></span><br>
 		z: <span id="zz"></span><br>
