@@ -10,7 +10,7 @@
 				xx.innerText = Math.max(c[0],xx.innerText)
 				yy.innerText = Math.max(c[1],yy.innerText)
 				zz.innerText = Math.max(c[2],zz.innerText)
-				if(c[0]>80) {
+				if(c[0]>70 || c[1]>70 || c[2]>70) {
 					great.currentTime = 0;
 					great.play();
 				}
