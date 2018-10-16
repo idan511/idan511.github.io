@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			if (window.DeviceOrientationEvent) {
+			    window.addEventListener("deviceorientation", function () {
+			        tilt([event.beta, event.gamma]);
+			    }, true);
+			} else if (window.DeviceMotionEvent) {
+			    window.addEventListener('devicemotion', function () {
+			        tilt([event.acceleration.x * 2, event.acceleration.y * 2]);
+			    }, true);
+			} else {
+			    window.addEventListener("MozOrientation", function () {
+			        tilt([orientation.x * 50, orientation.y * 50]);
+			    }, true);
+			}
+			function tilt(c) {
+				xx.innerText = c[0]
+				yy.innerText = c[1]
+			}
+		</script>
+	</head>
+	<body>
+		x: <span id="xx"></span>
+		y: <span id="yy"></span>
+	</body>
+</html>
