@@ -1,13 +1,13 @@
 <html>
 	<head>
 		<script type="text/javascript">
-			great.oncanplaythrough = function() {
+			function load() {
     alert("Can play through audio without stopping");
 				great.play()
 			    window.addEventListener('devicemotion', function () {
 			        tilt([event.acceleration.x * 2, event.acceleration.y * 2, event.acceleration.z * 2]);
 			    }, true);
-};
+}
 			function tilt(c) {
 				xx.innerText = Math.max(c[0],xx.innerText)
 				yy.innerText = Math.max(c[1],yy.innerText)
@@ -19,11 +19,11 @@
 			}
 		</script>
 	</head>
-	<body onload="load();">
+	<body>
 		x: <span id="xx"></span><br>
 		y: <span id="yy"></span><br>
 		z: <span id="zz"></span><br>
-		<audio id="great" preload="auto">
+		<audio id="great" preload="auto" oncanplaythrough="load();">
 		  <source src="kok.mp3" type="audio/mpeg">
 		Your browser does not support the audio element.
 		</audio>
