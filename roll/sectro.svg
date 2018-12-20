@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="sectro" viewBox="0 0 1017 1017">
+	<style>
+	line, rect {
+	 transition: all 0.5s ease;
+	}
+	</style>
+ 	<g id="sectorgroup">
+	  	<line stroke-linecap="round" stroke-linejoin="null" id="ctrr" fill-opacity="0" stroke-width="1" stroke="#ff0000ff" fill="none" x1="508.5" y1="508.5" x2="976.3199999999999" y2="508.5"></line>
+	  	<line stroke-linecap="round" stroke-linejoin="null" id="l60" fill-opacity="0" stroke-width="1" stroke="#000000" fill="none" stroke-dasharray="5, 5" x1="508.5" y1="508.5" x2="742.4100000000001" y2="103.35599560156396"></line>
+	  	<line stroke-linecap="round" stroke-linejoin="null" id="l45" fill-opacity="0" stroke-width="1" stroke="#000000" fill="none" x1="508.5" y1="508.5" x2="839.2986943746907" y2="177.70130562530937"></line>
+	  	<line stroke-linecap="round" stroke-linejoin="null" id="r60" fill-opacity="0" stroke-width="1" stroke="#000000" fill="none" stroke-dasharray="5, 5" x1="508.5" y1="508.5" x2="742.4100000000001" y2="913.644004398436"></line>
+	  	<line stroke-linecap="round" stroke-linejoin="null" id="r45" fill-opacity="0" stroke-width="1" stroke="#000000" fill="none" x1="508.5" y1="508.5" x2="839.2986943746907" y2="839.2986943746906"></line>
+	</g>
+</svg>
