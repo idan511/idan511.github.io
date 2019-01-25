@@ -4,10 +4,11 @@
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 		<meta charset="UTF-8">
 		<link rel="apple-touch-icon" href="icon2.png">
 		<link rel="shortcut icon" href="icon.png" type="image/x-icon" />
+		<meta name="apple-mobile-web-app-title" content="המצודד">
 		<title>המצודד</title>
 		<script type='application/javascript' src='fastclick.js'></script>
 		<script type='application/javascript' src='shortcut.js'></script>
@@ -741,6 +742,9 @@
 			}
 			#fileMContainer>button {
 				flex:1;
+				padding: 1.5rem;
+				margin: 1rem;
+				font-size: 1rem;
 			}
 			#trainingTab>button {
 				display: block;
@@ -1089,6 +1093,10 @@
 				overflow: hidden;
 				height:auto;
 				max-height:4rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100vw;
 			}
 			#highScoreMame {
 				background: none;
@@ -1096,6 +1104,8 @@
 				border-bottom: 1px solid #0f0;
 				color:#0f0;
 				font-size: 1.5rem;
+				max-width: 300px;
+				flex:1;
 			}
 			#highScoreSubmit {
 				font-size: 1.5rem;
@@ -1134,6 +1144,24 @@
 			.scoreTable>tr:nth-child(2) {
 				font-size: 1.1rem;
 				font-weight: bold;
+			}
+			.modal {
+				height:100vh;
+				width:100vw;
+				position: fixed;
+				top:0px;
+				left:0px;
+				z-index:5;
+				display:flex;
+				flex-direction:column;
+				-webkit-align-items: center;
+				-webkit-justify-content: center;
+				-webkit-backdrop-filter: blur(5px);
+				background-color: rgba(255,255,255,0.6);
+			}
+			.modal>textarea {
+				height:70vh;
+				width:70vh;
 			}
 		</style>
 
@@ -1315,6 +1343,10 @@
 				document.getElementById('gameScoreHighScoreName').addEventListener('submit', function(e) {
 				  e.preventDefault(); //to prevent form submission
 				  saveHighScore();
+				});
+				document.getElementById('importModal').addEventListener('submit', function(e) {
+				  e.preventDefault(); //to prevent form submission
+				  importString2();
 				});
 				while (elevdatatable.childNodes.length > 2) {elevdatatable.removeChild(elevdatatable.lastChild);}
 				if(localStorage.rsgrid!=null) {
@@ -1794,9 +1826,10 @@
 		        var center = 70;
 		        var k      = 0.04;
 		        var range  = Math.sqrt(Math.pow(tp.x - rsp.x,2)+Math.pow(tp.y - rsp.y,2));
-		        var comp   = Math.round(base + mod / (1 + Math.pow(Math.E,(-1*k*(range - center)))));
+		        var comp   = base + mod / (1 + Math.pow(Math.E,(-1*k*(range - center))));
 		        console.log("range="+range);
 		        console.log("comp="+comp);
+		        console.log("deg="+deg);
 		        //compensate
 		        if (spd >= 200 && hdg != null) {
 		            var ddiff = deg - hdg;
@@ -1804,11 +1837,14 @@
 		            while (ddiff < 0) {
 		                ddiff += 360;
 		            }
+		            var compModRange = 0.5;
+		            var compMod = (compModRange * Math.cos((ddiff+90)*Math.PI/90)) / 2 + (2-compModRange) / 2;  //(range cos((x + 90) π / 90)) / 2 + (2 - range) / 2
+		            console.log("compMod="+compMod);
 		            if (ddiff > comp && ddiff < 180 - comp) {
-		            	deg -= comp;
+		            	deg -= comp*compMod;
 		            }
 		            if (ddiff < 360 - comp && ddiff > 180 + comp) {
-		                deg += comp;
+		                deg += comp*compMod;
 		            }
 		            if (deg < 0) {
 		                deg += 360;
@@ -1817,7 +1853,8 @@
 		                deg -= 360;
 		            }
 		        }
-		        return deg;
+		        console.log("deg="+deg);
+		        return Math.round(deg);
 		    }
 		    /*function getAZ(gridd, alt, spd, hdg, rsg, min, algor) {
 		    	var rsp = gridToCord(rsg);
@@ -2589,6 +2626,10 @@
 						element.style.height = gamelayers.clientHeight + "px";
 					}
 				});
+				islbCanvas.width = vw;
+				if(localStorage.islbdata!=null) {
+					drawISLB(JSON.parse(localStorage.islbdata), true);
+				}
 				gamesectro.style.transform = "translate(" + (gridToCord(localStorage.rsgrid).x - 120)*(gamelayers.clientWidth/240) + "px, " + (240 - gridToCord(localStorage.rsgrid).y - 120)*(gamelayers.clientHeight/240) + "px)";
 				launcherGameSVG.style.transform = "translate(" + (gridToCord(localStorage.rsgrid).x - 120)*(gamelayers.clientWidth/240) + "px, " + (240 - gridToCord(localStorage.rsgrid).y - 120)*(gamelayers.clientHeight/240) + "px)";
 				generateGameLauncherSVG();
@@ -2681,13 +2722,28 @@
 			function exportString(saveFileArr) {
 				var namer = "dd";
 				var str = JSON.stringify(saveLocation(namer).arr);
-				alert(str);
+				//console.log(str);
+				exportTA.value = "";
+				exportTA.value = str;
+				exportTA.select()
+				exportModal.dataset.show = "true"
 			}
 			function importString() {
-				var str = prompt("הדבק מחרוזת:");
-				openLocation(JSON.parse(str))
+				importTA.value = "";
+				importModal.dataset.show = "true"
+			}
+			function closeimportString() {
+				importModal.dataset.show = "false"
+			}
+			function closeexportString() {
+				exportModal.dataset.show = "false"
+			}
+			function importString2() {
+				importModal.dataset.show = "false"
+				openLocation(JSON.parse(importTA.value))
 			}
 			function openLocation(saveFileArr) {
+				console.log(saveFileArr)
 				if(typeof saveFileArr == "number") {
 					console.log("Trying to find array in localStorage...")
 					var x = JSON.parse(localStorage.saveFiles)[saveFileArr].arr;
@@ -3363,7 +3419,7 @@
 				if(nhs) {
 					scoreTitle.innerText = "ניקוד גבוה חדש!"
 					scoreTitle.dataset.type="newHigh"
-					gameScoreHighScoreName.style.display = "block"
+					gameScoreHighScoreName.style.display = "flex"
 					setTimeout(function(){ gameScoreHighScoreName.dataset.show="" }, 1000);
 				} else {
 					scoreTitle.innerText = "ניקוד סופי:"
@@ -3377,6 +3433,7 @@
 			function returnToGameTitle() {
 				gameScorePanel.dataset.show="false";
 				mainTitleGame.dataset.show="true";
+				highScoreMame.blur();
 				/*theepicsong.pause()
 				theepicsong.currentTime = 0;*/
 			}
@@ -3846,7 +3903,7 @@
 				<button onclick="toggleFullScreen()">מסך מלא</button>
 				<hr>
 				<div id="credits">
-					1.0.0 - נוצר ע״י עידן הלפרין
+					1.0.1 - נוצר ע״י עידן הלפרין
 				</div>
 			</div>
 			</div>
@@ -4162,7 +4219,7 @@
 					<div id="scoreTitleNum">12345</div>
 				</div>
 				<form id="gameScoreHighScoreName" data-show="dead">
-					<label for="highScoreMame">שם:&nbsp</label><input type="text" id="highScoreMame"><button type="submit" id="highScoreSubmit">שמור</button>
+					<label for="highScoreMame">שם:&nbsp</label><input type="text" id="highScoreMame" size="3" maxlength="15"><button type="submit" id="highScoreSubmit">שמור</button>
 				</form>
 				<button id="endRoundButton" onclick="returnToGameTitle()" class="lilbuttonpro">צא</button>
 			</div>
@@ -4175,5 +4232,14 @@
 				<button onclick="exitLB()" class="lilbuttonpro" style="margin:0px !important;">צא</button>
 			</div>
 		</div>
+		<form class="modal" id="importModal" data-show="false">
+			<textarea id="importTA"></textarea>
+			<button type="submit">ייבא</button>
+			<button type="button" onclick="closeimportString();">ביטול</button>
+		</form>
+		<form class="modal" id="exportModal" data-show="false">
+			<textarea id="exportTA"></textarea>
+			<button type="button" onclick="closeexportString();">סיום</button>
+		</form>
 	</body>
 </html>
