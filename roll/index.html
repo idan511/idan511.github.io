@@ -1827,6 +1827,10 @@
 		        var center = 70;
 		        var k      = 0.04;
 		        var range  = Math.sqrt(Math.pow(tp.x - rsp.x,2)+Math.pow(tp.y - rsp.y,2));
+		        if(range < 4) {
+		        	console.log("small range! (" + range + ")")
+		        	return Math.round(hdg);
+		        }
 		        var comp   = base + mod / (1 + Math.pow(Math.E,(-1*k*(range - center))));
 		        console.log("range="+range);
 		        console.log("comp="+comp);
@@ -1857,72 +1861,6 @@
 		        console.log("deg="+deg);
 		        return Math.round(deg);
 		    }
-		    /*function getAZ(gridd, alt, spd, hdg, rsg, min, algor) {
-		    	var rsp = gridToCord(rsg);
-		        var tp;
-		        if(hdg!=null) {tp = predictCord(gridd, hdg, spd, min);}
-		        else          {tp = gridToCord(gridd);}
-		        var deg;
-
-		        //choose algorithm
-
-		        if(algor=="default") {
-		        	algor = localStorage.algor;
-		        }
-		        switch(algor) {
-					case "classicRad":
-						deg = classic(tp, rsp, spd, hdg);
-					break;
-					case "classicPlusRad":
-						deg = classicp(tp, rsp, spd, hdg);
-					break;
-					case "rawRad":
-						deg = raw(tp, rsp);
-					break;
-					default:
-						deg = classic(tp, rsp, spd, hdg);
-					break;
-				}
-
-				//launcher support filter
-
-				var mslc = -1;
-				var rdeg = raw(tp, rsp);
-				console.log(deg)
-				if(localStorage.lsf!=null && localStorage.lstoggle=="true") {
-					var ndeg = applyLSF(JSON.parse(localStorage.lsf), deg)
-					console.log(ndeg)
-					var degdiff = (ndeg-rdeg)%360
-					if(degdiff>180) {
-						degdiff -= 360;
-					}
-					if(degdiff<-180) {
-						degdiff += 360;
-					}
-					if(Math.abs(degdiff) >= 44) {
-						var nndeg = applyLSF(JSON.parse(localStorage.lsf), rdeg);
-						var ndegdiff = (nndeg-rdeg)%360
-						if(ndegdiff>180) {
-							ndegdiff -= 360;
-						}
-						if(ndegdiff<-180) {
-							ndegdiff += 360;
-						}
-						if(ndegdiff<localStorage.panicLSsearch) {
-							deg = nndeg;
-						}
-					} else {
-						deg = ndeg;
-					}
-
-					mslc = generateLSsupport(JSON.parse(localStorage.launchers))[deg]
-					missileCountContainer.style.display = "inline"
-				} else {
-					missileCountContainer.style.display = "none"
-				}
-
-				return deg;
-		    }*/
 			function calcAZ(gridd, alt, spd, hdg, rsg, min, algor, theShit) {
 				var rsp = gridToCord(rsg);
 		        var tp;
@@ -2528,9 +2466,6 @@
 			  nText.setAttribute("x", sizeMod.w2)//(width - 2)*-0.31);
 			  nText.setAttribute("y", sizeMod.h2)//(width - 2)/3);
 			  g.appendChild(nText);
-			//nText.setAttribute("x",document.getElementById('nt').getBoundingClientRect().width/-2);
-			// document.getElementById("nt").setAttribute("y",document.getElementById('nt').getBoundingClientRect().height/3);
-			//  document.getElementById("nt").style.transform = puttri(cx, cy, 70, radius, "n");
 			  theRingContainer.appendChild(g);
 			}
 			function puttri(x, y, deg, radius, place) {
@@ -2571,10 +2506,6 @@
 		        fr.readAsDataURL(value[0]);
 		        
 			}
-			//<input type="range" id="scaleRange"  min="0" max="200" oninput="changeLines()">
-			//	<input type="range" id="leftRange" min="-1000" max="1000" oninput="changeLines()">
-			//	<input type="range" id="topRange" min="-1000" max="1000" oninput="changeLines()">
-			//	<div id="testImageContainer"><img src="regionMap.svg" id="testImage"></div>
 			function changeLines() {
 				localStorage.linesLeft = leftRange.value;
 				localStorage.linesTop  = topRange.value;
@@ -2991,151 +2922,6 @@
 			  	ctx.stroke();
 			}
 			function setDelayTime(value) {localStorage.delayTime = value;}
-			/*function setupGame(type, difficulity) {
-				score = 0;
-				qnvar = 0;
-				mtime = difficulity;
-				gametimemeter.max = mtime;
-				theepicsong.play()
-				if(type == 0) {
-					// reorientaion setup
-				}
-				if(type == 1) {
-					// grid setup
-					realgamearena.appendChild(getTextPad(gridPad))
-					realgamearena.appendChild(getTouchPad())
-					realgamearena.dataset.pos = "static"
-				}
-				if(type == 2) {
-					// CRT setup
-				}
-			}
-			var score = 0;
-			var qnvar = 1;
-			var mtime;
-			function startgame(type) {
-				score = 0;
-				if(geasy.checked) {
-					setupGame(type, 15);
-				}
-				if(gmedium.checked) {
-					setupGame(type, 10);
-				}
-				if(ghard.checked) {
-					setupGame(type, 6);
-				}
-				openearena();
-				nextQ();
-			}
-			function nextQ() {
-				if(qnvar>=10) {
-					endGame();
-				} else {
-					qnvar++;
-					qn.innerText = qnvar
-					gametimemeter.value = mtime
-					startCountDown();
-				}
-			}
-			function endGame() {
-				alert("score: " + score)
-				closearena(true)
-			}*/
-			function generateRandomTarget(gridMargin, minAlt, maxAlt, minSpeed, maxSpeed, directionComplication) {
-				var tar = {};
-				tar.x = rInt(gridMargin, 240-gridMargin)
-				tar.y = rInt(gridMargin, 240-gridMargin)
-				tar.spd = rInt(minSpeed, maxSpeed)
-				tar.alt = rInt(minAlt, maxAlt)
-				tar.grid = cordToGrid(tar.x, tar.y)
-				if(directionComplication == true) {
-					tar.hdg = rInt(0, 359);
-				} else {
-					tar.hdg = rInt(0,7)*45;
-				}
-				return tar;
-			}
-			function rInt(min, max) {
-				return Math.floor(Math.random() * (max - min)) + min;
-			}
-			/*function openearena() {
-				gamearena.style.display = "block";
-				setTimeout(function(){
-					gamearena.style.filter = "";
-					gamearena.style.transform = "scale(1)";
-					gamearena.style.opacity = "1";
-				}, 50);
-			}
-			function closearena(force) {
-				if(force!=true) {
-					force = confirm("להפסיק את האימון?")
-				}
-				if(force==true) {
-					gamearena.style.filter = "blur(10px)";
-					gamearena.style.transform = "scale(1.1)";
-					gamearena.style.opacity = "0";
-					setTimeout(function(){ 
-						gamearena.style.display = "none";
-						realgamearena.innerHTML = "";
-					}, 1000);
-					theepicsong.pause()
-					theepicsong.currentTime = 0;
-				}
-			}
-			function startCountDown() {
-				var inter = setInterval(function(){ 
-					if(gametimemeter.value>0) {					
-						gametimemeter.value-=0.01;
-						timetext.innerText = Math.round(gametimemeter.value*10)/10 + (Math.round(gametimemeter.value*10)%10==0 ? ".0" : "");
-					} else {
-						clearInterval(inter);
-						nextQ();
-					}
-				}, 10);
-			}
-			function toggleAudio(value) {
-				theepicsong.muted = value;
-			}
-			function getTouchPad() {
-				var tbl = document.createElement("table");
-				tbl.setAttribute("class", "thePad")
-				for(var i=0;i<240;i++) {
-					var tr = document.createElement("tr");
-					for(var j=0;j<240;j++) {
-						var td = document.createElement("td");
-						td.setAttribute("id", "padelem" + j + "#" + i)
-						td.setAttribute("onclick", "padclick(" + j + "," + i + ")")
-						tr.appendChild(td)
-					}
-					tbl.appendChild(tr)
-				}
-				return tbl;
-			}
-			function getTextPad(pad) {
-				var tbl = document.createElement("table");
-				tbl.setAttribute("class", "textPad")
-				for(var i=0;i<4;i++) {
-					var tr = document.createElement("tr");
-					for(var j=0;j<4;j++) {
-						var td = document.createElement("td");
-						td.innerText = pad[i][j];
-						tr.appendChild(td)
-					}
-					tbl.appendChild(tr)
-				}
-				return tbl;
-			}
-			var currentxselection=1;
-			var currentyselection=1;
-			function padclick(x,y) {
-				document.getElementById("padelem" + (240-currentxselection) + "#" + (240-currentyselection)).dataset.selectedd = "false"
-				document.getElementById("padelem" + x + "#" + y).dataset.selectedd = "true"
-				x = 240 - x
-				y = 240 - y
-				console.log(x + ", " + y)
-				currentxselection = x
-				currentyselection = y
-			}*/
 			var gameMode="az";
 			function toggleFullScreen() {
 			  if (!document.fullscreenElement) {
@@ -3904,7 +3690,7 @@
 				<button onclick="toggleFullScreen()">מסך מלא</button>
 				<hr>
 				<div id="credits">
-					1.0.1 - נוצר ע״י עידן הלפרין
+					1.0.2 - נוצר ע״י עידן הלפרין
 				</div>
 			</div>
 			</div>
