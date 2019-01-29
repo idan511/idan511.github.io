@@ -1827,7 +1827,7 @@
 		        var center = 70;
 		        var k      = 0.04;
 		        var range  = Math.sqrt(Math.pow(tp.x - rsp.x,2)+Math.pow(tp.y - rsp.y,2));
-		        if(range < 4) {
+		        if(range < 4 && hdg != null) {
 		        	console.log("small range! (" + range + ")")
 		        	return Math.round(hdg);
 		        }
@@ -2922,6 +2922,23 @@
 			  	ctx.stroke();
 			}
 			function setDelayTime(value) {localStorage.delayTime = value;}
+			function generateRandomTarget(gridMargin, minAlt, maxAlt, minSpeed, maxSpeed, directionComplication) {
+				var tar = {};
+				tar.x = rInt(gridMargin, 240-gridMargin)
+				tar.y = rInt(gridMargin, 240-gridMargin)
+				tar.spd = rInt(minSpeed, maxSpeed)
+				tar.alt = rInt(minAlt, maxAlt)
+				tar.grid = cordToGrid(tar.x, tar.y)
+				if(directionComplication == true) {
+					tar.hdg = rInt(0, 359);
+				} else {
+					tar.hdg = rInt(0,7)*45;
+				}
+				return tar;
+			}
+			function rInt(min, max) {
+				return Math.floor(Math.random() * (max - min)) + min;
+			}
 			var gameMode="az";
 			function toggleFullScreen() {
 			  if (!document.fullscreenElement) {
@@ -3690,7 +3707,7 @@
 				<button onclick="toggleFullScreen()">מסך מלא</button>
 				<hr>
 				<div id="credits">
-					1.0.2 - נוצר ע״י עידן הלפרין
+					1.0.3 - נוצר ע״י עידן הלפרין
 				</div>
 			</div>
 			</div>
@@ -3719,26 +3736,6 @@
 			<header id="savePromptHeader" class="gametopbar"></header><div onclick="closesavePrompt();" class="xbutton">✕</div>
 			<div id="flcontainer"><div id="flippinList"></div></div>
 		</div>
-		<!--<div id="gamearena">
-			<div class="gametopbar">
-				<meter id='gametimemeter' min='0' value='5'  high='4' low='2' optimum='6'></meter>
-				<div id="maindatatopbar">
-					<span id='timetext'></span>&nbsp;-&nbsp;
-					<span id="scoretracker"></span>
-				</div>
-				<span onclick='closearena()' class='xbutton'>✕</span>
-				
-				<div>
-					<span id='qn'>1</span>/<span id='mqn'>10</span>
-				 </div>
-			</div>
-			<div id="realgamearena">
-			</div>
-			<div id="targetDateGame">
-			
-			</div>
-			<button id="gameconfbutt" class="bluebutt" onClick="submitAnswer()">אישור</button>
-		</div>-->
 	</div>
 		<div id="trainerContainer" style="display:none;">
 			<div id="particles-js"></div>
