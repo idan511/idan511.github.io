@@ -14,6 +14,9 @@
 		<script type='application/javascript' src='shortcut.js'></script>
 		<script src="particles.min.js"></script>
 		<style type="text/css">
+			* {
+				-webkit-tap-highlight-color: rgba(0,0,0,0);
+			}
 			html, body {
 				margin:0px;
 				padding:0px;
@@ -1167,6 +1170,7 @@
 		</style>
 
 		<script type="text/javascript">
+			document.addEventListener("touchstart", function(){}, true);
 			var grid = [[],[],[],[]];
 			var numPad =   [["1","2","3","⌫"],
 							["4","5","6",""],
@@ -3029,6 +3033,7 @@
 				gameSecondaryLines.dataset.enabled = localStorage.gameMapSGrid;
 				launcherGameSVG.dataset.enabled = localStorage.gameMapLS;
 				bglines3.dataset.enabled = localStorage.gameMapBorder;
+				gameChars.dataset.enabled = localStorage.gameMapChar;
 				//gameSecondaryLines.dataset.enabled = localStorage.gameMapPGrid;
 			}
 			document.addEventListener('mousemove', mousemoved);
@@ -3707,7 +3712,7 @@
 				<button onclick="toggleFullScreen()">מסך מלא</button>
 				<hr>
 				<div id="credits">
-					1.0.3 - נוצר ע״י עידן הלפרין
+					1.0.4 - נוצר ע״י עידן הלפרין
 				</div>
 			</div>
 			</div>
