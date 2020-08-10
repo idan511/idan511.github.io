@@ -1,7 +1,0 @@
-<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
-  <circle fill="#ecf0f1" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="20" cy="20" r="15" id="svg_1">
-<animate attributeName="opacity" attributeType="XML" values=".9; 1; .9" begin="0s" dur="2s" repeatCount="indefinite" />
-  </circle>
-  <rect ry="1.5" rx="1.5" id="svg_3" height="3" width="3" y="11.02959" x="18.5" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="#575858"/>
-  <rect ry="1.5" rx="1.5" height="12.96056" width="3" y="16.00986" x="18.5" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="#575858" id="svg_4"/>
-</svg>
