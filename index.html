@@ -1,117 +1,257 @@
-<!DOCTYPE HTML>
-<html lang="he">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, minimal-ui">
-		<meta name="viewport" content="initial-scale=1.0">
+<html lang="en">
+<head>
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+	<style>
+		body, html {
+			padding: 0;
+			margin: 0;
+			font-family: 'Fira Code', monospace;
+			background: rgb(46, 71, 76);
+			background: linear-gradient(to top, rgba(74, 115, 123, 1), rgba(105, 155, 174, 1));
+		}
 
-		<title>עידן הלפרין - מפתח, מעצב</title>
-		
-		<link rel="canonical" href="https://idanalper.in">
-		<link rel="stylesheet" href="style.css">
-		<link href="https://fonts.googleapis.com/css?family=Assistant" rel="stylesheet">
+		a {
+			text-decoration: none;
+		}
 
-		<script type="text/javascript">
-			window.onload = function() {
-				document.documentElement.style.setProperty('--main-h', randomInt(0,359));
+		.page {
+			width: 100vw;
+			max-width: 1000px;
+			background: whitesmoke;
+			box-shadow: 0 0 5px #1F1F21;
+			padding: 2em;
+			margin: 2em;
+		}
+
+		.title {
+			width: 100vw;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: whitesmoke;
+			font-size: 6em;
+			text-shadow: 0 0 5px #000000;
+		}
+		footer {
+			margin: 2em;
+			color: whitesmoke;
+			text-shadow: 0 0 5px #000000;
+		}
+		.parallax {
+			perspective: 1px;
+			height: 100vh;
+			overflow-x: hidden;
+			overflow-y: auto;
+		}
+		.pages {
+			transform: translateZ(0);
+			-webkit-backdrop-filter: blur(15px);
+			background: rgba(0,0,0,0);
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			height: available;
+		}
+		.bubble {
+			position: absolute;
+			top: 50vh;
+			left: 50vw;
+			background: rgba(245, 245, 245, 0.8);
+			border-radius: 10em;
+			height: 15em;
+			width: 15em;
+		}
+		header {
+			display: block;
+			font-size: larger;
+		}
+		.links>a {
+			margin: 1em;
+		}
+		.links>a>img {
+			height: 64px;
+			width: 64px;
+		}
+		.links {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+		}
+
+		#arrow {
+			transform: translate3d(0px, 0px, 0.21px);
+			height: 5em;
+			width: 5em;
+			position: absolute;
+			bottom:13vh;
+			left: calc(50vw - 2.5em);
+			opacity: 0.6;
+			animation: alternate bounce 1s infinite;
+			transition: opacity 2s;
+		}
+
+		#about>p {
+			text-align: justify;
+		}
+
+		.portfolio>div>span {
+			font-size: large;
+		}
+
+		.portfolio>div {
+			margin-left: 1em;
+		}
+
+		.portfolio>img {
+			height: 6em;
+		}
+		.portfolio {
+			display: flex;
+			box-shadow: 0 1px 5px #1F1F21;
+			padding: 1em;
+			text-decoration: none;
+			color: black;
+			margin: 1.5em 0 1.5em 0;
+		}
+
+		#morePortfolio {
+			display: block;
+			text-align: right;
+		}
+
+		.plangs {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			grid-template-rows: repeat(3, 1fr);
+		}
+
+		@keyframes bounce {
+			from {
+				transform: translate3d(0px, 0px, 0.21px);
 			}
-			function randomInt(min,max){return Math.floor(Math.random()*(max-min+1)+min);}
-		</script>
-	</head>
-	<body>
-	<canvas id="bgcanvas" style="display:none;"></canvas>
-	<noscript><div id="bgcanvasNS"></div><div id="bgcanvasNS2"></div></noscript>
-	<div class="panels">
-		<div class="panel" id="homePanel" name="homePanel">
-		<div class="title" id="bigTitle">
-			<img src="images/logo_ani2.svg">
+			to {
+				transform: translate3d(0px, 10px, 0.21px);
+			}
+		}
+
+		@keyframes float {
+			0% { transform: translate(0,  0px); }
+			10%  { transform: translate(5, 15px); }
+			20%  { transform: translate(20, 15px); }
+			30%  { transform: translate(20, -20px); }
+			40%  { transform: translate(-20, -15px); }
+			50%  { transform: translate(-16, 25px); }
+			60%  { transform: translate(20, 15px); }
+			70%  { transform: translate(20, 15px); }
+			80%  { transform: translate(20, 15px); }
+			90%  { transform: translate(20, 15px); }
+			100%   { transform: translate(0, 0px); }
+		}
+	</style>
+	<title>Idan Alperin</title>
+</head>
+<body>
+<div class="parallax" onscroll="document.getElementById('arrow').style.opacity = 0">
+	<div class="bubble" style="transform: translate3d(10px, -10px, -2px);"></div>
+	<div class="bubble" style="transform: translate3d(100px, -250px, -1px);"></div>
+	<div class="bubble" style="transform: translate3d(700px, -1150px, -3px);"></div>
+	<div class="bubble" style="transform: translate3d(-610px, 510px, -2.1px);"></div>
+	<div class="bubble" style="transform: translate3d(-1500px, -40px, -1.1px);"></div>
+	<div class="bubble" style="transform: translate3d(1400px, 500px, -3.1px);"></div>
+	<div class="bubble" style="transform: translate3d(-1500px, -500px, -2.2px);"></div>
+	<div class="bubble" style="transform: translate3d(1000px, -300px, -1.2px);"></div>
+	<div class="bubble" style="transform: translate3d(-400px, -1800px, -4px);"></div>
+	<div class="bubble" style="transform: translate3d(1600px, -1000px, -2.3px);"></div>
+	<div class="bubble" style="transform: translate3d(160px, 700px, -1.3px);"></div>
+	<img src="images/arrow-down.svg" id="arrow">
+	<div class="pages">
+		<div class="title">
+			Idan Alperin
 		</div>
-		<menu id="menu">
-			<a class="posbarMenuItem" href="#homePanel">בית</a>
-			<a class="posbarMenuItem" href="#aboutMe">אודות</a>
-			<a class="posbarMenuItem" href="#portfolio">תיק עבודות</a>
-			<!--<a class="posbarMenuItem" href="#projects">פרוייקטים</a>-->
-			<!--<a href="idans_resume.pdf" target="_blank">קורות חיים</a>-->
-			<!--<a href="https://codepen.io/Idan511/" target="_blank">CODEPEN</a>-->
-		</menu>
-		</div>
-		<div class="panel regpanel" name="aboutMe" id="aboutMe">
-			<article id="aboutmearticle">
-				<h1>עלי...</h1>
+		<div class="page">
+			<header>About me..</header>
+			<article id="about">
 				<p>
-					בן 21, בונה אתרים מגיל 10.
-				</p><p>
-					מעבר לעיצוב אתרים, אני נהנה לנגן בפסנתר ובגיטרה, ומתעסק מעט באלקטרוניקה
+					Hello! I am an undergrad in the Hebrew University of Jerusalem studying computer science. Since i was little, I loved programming and messing with computers and I carry this attitude into my studies.
+					I find working on low-level code to be my passion. Writing efficient and clean C & C++ code is immensely gratifying. Hopefully, I will continue to get better and more professional in this field.
+				</p>
+				<p>
+					My portfolio includes some websites I made back in high-school, and a web app during my conscription. I Hope I will be able to release some Uni projects soon!
+				</p>
+				<p>
+					Currently, I am looking for new challenges. Reach out to <a href="mailto:idanalper@gmail.com">idanalper@gmail.com</a> to connect!
 				</p>
 			</article>
 		</div>
-		<div class="panel regpanel" name="portfolio" id="portfolio">
-			<div id="porfolioh">
-				<h1>תיק עבודות</h1>
-			</div>
-			<div class="gallery">
-				<a taget="_blank" href="portfolio/trkr/index.html">
-					<img src="portfolio/thumbnails/trkr.png">
-					<h2>
-						TRKR
-					</h2>
-					<article>
-						יומן מזון ומשקל
-					</article>
-				</a>
-				<!--<a>
-					<img src="http://animals.sandiegozoo.org/sites/default/files/2016-11/animals_hero_giraffe_1_0.jpg">
-					<h2>
-						Ricardo Photography
-					</h2>
-					<article>
-						אתר לצלם.
-					</article>
-				</a>-->
-				<a taget="_blank" href="portfolio/ganim/index.html">
-					<img src="portfolio/thumbnails/ganim.jpg">
-					<h2>
-						שבט גנים
-					</h2>
-					<article>
-						אתר בשביל שבט גנים, מרכז קישורים ומידע על השבט.
-					</article>
-				</a>
-			</div>
-			<a class="morelink" href="portfolio/index.html" id="apa">
-				כל הפרוייקטים >
-			</a>
+		<div class="page">
+			<header>Programming Languages</header>
+			<ul class="plangs">
+				<li>HTML</li>
+				<li>CSS</li>
+				<li>mySQL</li>
+				<li>C</li>
+				<li>JavaScript</li>
+				<li>PHP</li>
+				<li>Java</li>
+				<li>C#</li>
+				<li>C++</li>
+				<li>Python</li>
+				<li>Bash</li>
+			</ul>
 		</div>
-		<!--<div class="panel" name="projects" id="projects">
-			<div>
-				<h1>פרוייקטים</h1>
-			</div>
-		</div>-->
-		<div class="panel regpanel" id="contactme">
-			<div class="contact">
-				<span>דוא״ל: <a href="mailto:idanalper@gmail.com">idanalper@gmail.com</a></span>
-				<span>טלפון: <a href="tel:052-566-9724">052-566-9724</a></span>
-				<!--<span><a href="idans_resume.pdf" target="_blank">קורות חיים</a></span>-->
-			</div>
-			<div class="contact">
-				<a href="https://codepen.io/Idan511/" target="_blank"><img src="images/codepen-logo2.svg"></a>
-				<a href="https://github.com/idan511" target="_blank"><img src="images/GitHub-logo.svg"></a>
-				<a><img src="images/linkedin-logo.svg"></a>
+		<div class="page">
+			<header>Portfolio</header>
+			<a class="portfolio" href="portfolio/playground" target="_blank">
+				<img src="portfolio/thumbnails/pg.png" alt="playground">
+				<div>
+					<span>Playground</span>
+					<p>
+						A simple html/css/js editor I made back in middle school
+					</p>
+				</div>
+			</a>
+			<a class="portfolio" href="portfolio/trkr" target="_blank">
+				<img src="portfolio/thumbnails/trkr.png" alt="trkr">
+				<div>
+					<span>TRKR</span>
+					<p>
+						A calorie counter I never finished, mainly wanted to try material design.
+					</p>
+				</div>
+			</a>
+			<a class="portfolio" href="portfolio/ganim" target="_blank">
+				<img src="portfolio/thumbnails/ganim.jpg" alt="ganim">
+				<div>
+					<span>Ganim</span>
+					<p>
+						A mock website for my scouts group.
+					</p>
+				</div>
+			</a>
+			<a href="portfolio.html" id="morePortfolio">View more -></a>
+		</div>
+		<div class="page">
+			<div class="links">
+				<a href="mailto:idanalper@gmail.com">
+					<img src="images/email.svg" alt="E-mail">
+				</a>
+				<a href="https://github.com/idan511" target="_blank">
+					<img src="images/GitHub-logo.svg" alt="GitHub">
+				</a>
+				<a href="https://codepen.io/idan511" target="_blank">
+					<img src="images/codepen-logo2.svg" alt="CodePen">
+				</a>
+				<a href="https://www.linkedin.com/in/עידן-הלפרין-6aaa44207/" target="_blank">
+					<img src="images/linkedin-logo.svg" alt="LinkedIn">
+				</a>
 			</div>
 		</div>
 		<footer>
-			<div id="footerlinks">
-				<a href="idans_resume.pdf" target="_blank">קורות חיים</a>
-			</div>
-			<img src="images/footer_logo.svg">
-			<div id="copyright">
-				&copy; 2018, עידן הלפרין
-			</div>
+			&copy; 2021, Idan Alperin
 		</footer>
 	</div>
-	<script type="text/javascript" src="bubbles.js"></script>
-	<script type="text/javascript" src="scrolls.js"></script>
-	<script type="text/javascript" src="fps_counter.js"></script>
-	<script type="text/javascript" src="smooth_scrolls.js"></script>
-	</body>
+	</div>
+</body>
 </html>
