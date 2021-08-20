@@ -1,155 +1,8 @@
+<!doctype html>
 <html lang="en">
 <head>
 	<link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
-	<style>
-		body, html {
-			padding: 0;
-			margin: 0;
-			font-family: 'Fira Code', monospace;
-			background: rgb(46, 71, 76);
-			background: linear-gradient(to top, rgba(74, 115, 123, 1), rgba(105, 155, 174, 1));
-		}
-
-		a {
-			text-decoration: none;
-		}
-
-		.page {
-			width: 100vw;
-			max-width: 1000px;
-			background: whitesmoke;
-			box-shadow: 0 0 5px #1F1F21;
-			padding: 2em;
-			margin: 2em;
-		}
-
-		.title {
-			width: 100vw;
-			height: 100vh;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			color: whitesmoke;
-			font-size: 6em;
-			text-shadow: 0 0 5px #000000;
-		}
-		footer {
-			margin: 2em;
-			color: whitesmoke;
-			text-shadow: 0 0 5px #000000;
-		}
-		.parallax {
-			perspective: 1px;
-			height: 100vh;
-			overflow-x: hidden;
-			overflow-y: auto;
-		}
-		.pages {
-			transform: translateZ(0);
-			-webkit-backdrop-filter: blur(15px);
-			background: rgba(0,0,0,0);
-			display: flex;
-			align-items: center;
-			flex-direction: column;
-			height: available;
-		}
-		.bubble {
-			position: absolute;
-			top: 50vh;
-			left: 50vw;
-			background: rgba(245, 245, 245, 0.8);
-			border-radius: 10em;
-			height: 15em;
-			width: 15em;
-		}
-		header {
-			display: block;
-			font-size: larger;
-		}
-		.links>a {
-			margin: 1em;
-		}
-		.links>a>img {
-			height: 64px;
-			width: 64px;
-		}
-		.links {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			justify-content: center;
-		}
-
-		#arrow {
-			transform: translate3d(0px, 0px, 0.21px);
-			height: 5em;
-			width: 5em;
-			position: absolute;
-			bottom:13vh;
-			left: calc(50vw - 2.5em);
-			opacity: 0.6;
-			animation: alternate bounce 1s infinite;
-			transition: opacity 2s;
-		}
-
-		#about>p {
-			text-align: justify;
-		}
-
-		.portfolio>div>span {
-			font-size: large;
-		}
-
-		.portfolio>div {
-			margin-left: 1em;
-		}
-
-		.portfolio>img {
-			height: 6em;
-		}
-		.portfolio {
-			display: flex;
-			box-shadow: 0 1px 5px #1F1F21;
-			padding: 1em;
-			text-decoration: none;
-			color: black;
-			margin: 1.5em 0 1.5em 0;
-		}
-
-		#morePortfolio {
-			display: block;
-			text-align: right;
-		}
-
-		.plangs {
-			display: grid;
-			grid-template-columns: repeat(4, 1fr);
-			grid-template-rows: repeat(3, 1fr);
-		}
-
-		@keyframes bounce {
-			from {
-				transform: translate3d(0px, 0px, 0.21px);
-			}
-			to {
-				transform: translate3d(0px, 10px, 0.21px);
-			}
-		}
-
-		@keyframes float {
-			0% { transform: translate(0,  0px); }
-			10%  { transform: translate(5, 15px); }
-			20%  { transform: translate(20, 15px); }
-			30%  { transform: translate(20, -20px); }
-			40%  { transform: translate(-20, -15px); }
-			50%  { transform: translate(-16, 25px); }
-			60%  { transform: translate(20, 15px); }
-			70%  { transform: translate(20, 15px); }
-			80%  { transform: translate(20, 15px); }
-			90%  { transform: translate(20, 15px); }
-			100%   { transform: translate(0, 0px); }
-		}
-	</style>
+	<link rel="stylesheet" href="style.css">
 	<title>Idan Alperin</title>
 </head>
 <body>
@@ -201,7 +54,7 @@
 				<li>Bash</li>
 			</ul>
 		</div>
-		<div class="page">
+		<div class="page" id="portfolio">
 			<header>Portfolio</header>
 			<a class="portfolio" href="portfolio/playground" target="_blank">
 				<img src="portfolio/thumbnails/pg.png" alt="playground">
@@ -230,7 +83,7 @@
 					</p>
 				</div>
 			</a>
-			<a href="portfolio.html" id="morePortfolio">View more -></a>
+			<a href="portfolio" id="morePortfolio">View more -></a>
 		</div>
 		<div class="page">
 			<div class="links">
