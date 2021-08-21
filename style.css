@@ -18,6 +18,7 @@ a {
 	box-sizing: border-box;
 	padding: 2em;
 	margin: 2em;
+	border-radius: 1em;
 }
 
 .navigation_page {
@@ -52,6 +53,7 @@ footer {
 .pages {
 	transform: translateZ(0);
 	-webkit-backdrop-filter: blur(15px);
+	backdrop-filter: blur(15px);
 	background: rgba(0, 0, 0, 0);
 	display: flex;
 	align-items: center;
@@ -67,6 +69,12 @@ footer {
 	border-radius: 10em;
 	height: 15em;
 	width: 15em;
+}
+
+@supports not ((backdrop-filter: blur(15px)) or (-webkit-backdrop-filter: blur(15px))) {
+	.bubble {
+		filter: blur(25px);
+	}
 }
 
 header {
@@ -127,6 +135,7 @@ header {
 	color: black;
 	margin: 1.5em 0 1.5em 0;
 	transition: box-shadow 0.1s, transform 0.1s;
+	border-radius: 1em;
 }
 
 .portfolio:active {
