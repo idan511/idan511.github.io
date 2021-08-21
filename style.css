@@ -97,7 +97,7 @@ header {
 	position: absolute;
 	bottom: 13vh;
 	left: calc(50vw - 2.5em);
-	opacity: 0.6;
+	opacity: 0.5;
 	animation: alternate bounce 1s infinite;
 	transition: opacity 2s;
 }
@@ -136,6 +136,19 @@ header {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: repeat(3, 1fr);
+}
+
+.plangs>li {
+    list-style: none;
+}
+
+.plangs>li:before {
+    content: "\2022";
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    color: rgb(249, 38, 114);
 }
 
 @keyframes bounce {
