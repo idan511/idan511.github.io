@@ -15,14 +15,14 @@ a {
 	max-width: 1050px;
 	background: whitesmoke;
 	box-shadow: 0 0 5px #1F1F21;
-    box-sizing:border-box;
+	box-sizing: border-box;
 	padding: 2em;
 	margin: 2em;
 }
 
 .navigation_page {
-    padding: 1em 2em 1em 2em;
-    margin: 2em 0 0 0;
+	padding: 1em 2em 1em 2em;
+	margin: 2em 0 0 0;
 }
 
 .title {
@@ -138,18 +138,18 @@ header {
 	grid-template-rows: repeat(3, 1fr);
 }
 
-.plangs>li {
-    list-style: none;
-	margin: 5px;
+.plangs > li {
+	list-style: none;
+	line-height: 2;
 }
 
-.plangs>li:before {
-    content: "\2022";
-    font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
-    color: rgb(249, 38, 114);
+.plangs > li:before {
+	content: "\2022";
+	font-weight: bold;
+	display: inline-block;
+	width: 1em;
+	margin-left: -1em;
+	color: rgb(249, 38, 114);
 }
 
 @keyframes bounce {
