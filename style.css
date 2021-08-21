@@ -116,6 +116,7 @@ header {
 
 .portfolio > img {
 	height: 6em;
+	align-self: center;
 }
 
 .portfolio {
@@ -125,11 +126,16 @@ header {
 	text-decoration: none;
 	color: black;
 	margin: 1.5em 0 1.5em 0;
+	transition: box-shadow 0.1s, transform 0.1s;
+}
+
+.portfolio:active {
+	box-shadow: 0 0 3px #1F1F21;
+	transform: translateY(2px);
 }
 
 #morePortfolio {
-	display: block;
-	text-align: right;
+	float: right;
 }
 
 .plangs {
