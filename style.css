@@ -108,6 +108,7 @@ header {
 
 .portfolio > img {
 	height: 6em;
+	width: auto;
 	align-self: center;
 }
 
