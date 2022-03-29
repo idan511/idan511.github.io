@@ -1,11 +1,3 @@
-body, html {
-	padding: 0;
-	margin: 0;
-	font-family: 'Fira Code', monospace;
-	background: rgb(46, 71, 76);
-	background: linear-gradient(to top, rgba(74, 115, 123, 1), rgba(105, 155, 174, 1));
-}
-
 a {
 	text-decoration: none;
 }
@@ -207,36 +199,36 @@ header {
 
 @keyframes float {
 	0% {
-		transform: translate(0, 0px);
+		transform: translate(0px, 0px);
 	}
 	10% {
-		transform: translate(5, 15px);
+		transform: translate(5px, 15px);
 	}
 	20% {
-		transform: translate(20, 15px);
+		transform: translate(20px, 15px);
 	}
 	30% {
-		transform: translate(20, -20px);
+		transform: translate(20px, -20px);
 	}
 	40% {
-		transform: translate(-20, -15px);
+		transform: translate(-20px, -15px);
 	}
 	50% {
-		transform: translate(-16, 25px);
+		transform: translate(-16px, 25px);
 	}
 	60% {
-		transform: translate(20, 15px);
+		transform: translate(20px, 15px);
 	}
 	70% {
-		transform: translate(20, 15px);
+		transform: translate(20px, 15px);
 	}
 	80% {
-		transform: translate(20, 15px);
+		transform: translate(20px, 15px);
 	}
 	90% {
-		transform: translate(20, 15px);
+		transform: translate(20px, 15px);
 	}
 	100% {
-		transform: translate(0, 0px);
+		transform: translate(0px, 0px);
 	}
 }
