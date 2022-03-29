@@ -32,18 +32,6 @@ a {
 	margin: 2em 0 0 0;
 }
 
-.title {
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: whitesmoke;
-	font-size: 6em;
-	text-shadow: 0 0 5px #000000;
-	text-align: center;
-}
-
 footer {
 	margin: 2em;
 	color: whitesmoke;
