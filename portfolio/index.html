@@ -1,25 +1,25 @@
 <!doctype html>
-<html>
-	<head>
-		<meta name="viewport" content="width=device-width, minimal-ui">
-		<meta name="viewport" content="initial-scale=1.0">
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, minimal-ui">
+	<meta name="viewport" content="initial-scale=1.0">
 
-		<title>Idan Alperin - Portfolio</title>
+	<title>Idan Alperin - Portfolio</title>
 
-		<link rel="canonical" href="https://idanalper.in/portfolio">
-		<link rel="stylesheet" href="../style.css">
+	<link rel="canonical" href="https://idanalper.in/portfolio">
+	<link rel="stylesheet" href="../style.min.css">
 
-		<style>
+	<style>
+		#searchBox {
+			float: right;
+		}
+
+		@media only screen and (max-width: 1050px) {
 			#searchBox {
-				float: right;
+				display: block;
+				width: 100%;
+				margin: 1em 0 1em 0;
 			}
-
-			@media only screen and (max-width: 1050px) {
-				#searchBox {
-					display: block;
-					width: 100%;
-					margin: 1em 0 1em 0;
-				}
 			}
 		</style>
 	</head>
@@ -30,8 +30,10 @@
 					<a href="../#portfolio">Idan Alperin</a> > Portfolio
 				</div>
 				<div class="page">
-					<header>Idan Alperin's portfolio <input type="search" placeholder="Search" id="searchBox"></header>
-					<a class="portfolio" href="portfolio/playground" target="_blank">
+					<header><label for="searchBox">Idan Alperin's portfolio </label><input type="search"
+																						   placeholder="Search"
+																						   id="searchBox"></header>
+					<a class="portfolio" href="playground/" target="_blank">
 						<img src="thumbnails/pg.png" alt="playground">
 						<div>
 							<span>Playground</span>
@@ -40,7 +42,7 @@
 							</p>
 						</div>
 					</a>
-					<a class="portfolio" href="portfolio/trkr" target="_blank">
+					<a class="portfolio" href="trkr/" target="_blank">
 						<img src="thumbnails/trkr.png" alt="trkr">
 						<div>
 							<span>TRKR</span>
@@ -49,7 +51,7 @@
 							</p>
 						</div>
 					</a>
-					<a class="portfolio" href="portfolio/ganim" target="_blank">
+					<a class="portfolio" href="ganim/" target="_blank">
 						<img src="thumbnails/ganim.jpg" alt="ganim">
 						<div>
 							<span>Ganim</span>
