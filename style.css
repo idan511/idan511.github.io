@@ -117,7 +117,7 @@ header {
 	box-shadow: 0 1px 5px #1F1F21;
 	padding: 1em;
 	text-decoration: none;
-	color: black;
+	color: #000;
 	margin: 1.5em 0 1.5em 0;
 	transition: box-shadow 0.1s, transform 0.1s;
 	border-radius: 1em;
@@ -171,6 +171,26 @@ header {
 	width: 1em;
 	margin-left: -1em;
 	color: rgb(249, 38, 114);
+}
+
+@media (prefers-color-scheme: dark) {
+	.page {
+		background: rgba(29, 29, 29, 0.95);
+		color: whitesmoke;
+	}
+
+	.portfolio {
+		color: whitesmoke;
+		box-shadow: 0 1px 5px whitesmoke;
+	}
+
+	a:link:not(.portfolio) {
+		color: #9cd2e3;
+	}
+
+	a:visited:not(.portfolio) {
+		color: #b5ade5;
+	}
 }
 
 @keyframes bounce {
