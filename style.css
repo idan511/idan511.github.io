@@ -191,6 +191,15 @@ header {
 	a:visited:not(.portfolio) {
 		color: #b5ade5;
 	}
+
+	body {
+		background: rgb(46, 71, 76);
+		background: linear-gradient(to top, rgb(48, 75, 80), rgb(79, 117, 131));
+	}
+
+	.bubble {
+		background: rgba(175, 175, 175, 0.8);
+	}
 }
 
 @keyframes bounce {
