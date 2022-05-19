@@ -119,7 +119,7 @@ header {
 	text-decoration: none;
 	color: #000;
 	margin: 1.5em 0 1.5em 0;
-	transition: box-shadow 0.1s, transform 0.1s;
+	transition: box-shadow 0.1s, transform 0.1s, border 0.3s;
 	border-radius: 1em;
 }
 
@@ -184,6 +184,12 @@ header {
 		/*box-shadow: 0 1px 5px whitesmoke;*/
 		box-shadow: none;
 		border: 1px solid whitesmoke;
+	}
+
+	.portfolio:active {
+		box-shadow: none;
+		transform: none;
+		border: 0.1px solid whitesmoke;
 	}
 
 	a:link:not(.portfolio) {
