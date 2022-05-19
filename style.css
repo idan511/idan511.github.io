@@ -181,7 +181,9 @@ header {
 
 	.portfolio {
 		color: whitesmoke;
-		box-shadow: 0 1px 5px whitesmoke;
+		/*box-shadow: 0 1px 5px whitesmoke;*/
+		box-shadow: none;
+		border: 1px solid whitesmoke;
 	}
 
 	a:link:not(.portfolio) {
