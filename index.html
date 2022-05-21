@@ -37,7 +37,7 @@
 			height: 5em;
 			width: 5em;
 			position: absolute;
-			bottom: 13vh;
+			bottom: calc(13vh + env(safe-area-inset-bottom, 0vh));
 			left: calc(50vw - 2.5em);
 			animation: alternate bounce 1s infinite;
 			transition: opacity 2s;
