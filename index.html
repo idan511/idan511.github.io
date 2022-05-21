@@ -5,7 +5,11 @@
 		/* critical styles */
 		.title {
 			width: 100vw;
-			height: 100vh;
+			height: 100vh; /* Fallback */
+			height: -moz-available;
+			height: -webkit-fill-available;
+			height: fill-available;
+			height: stretch;
 			display: flex;
 			justify-content: center;
 			align-items: center;
