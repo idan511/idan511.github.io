@@ -4,6 +4,7 @@ body, html {
 	font-family: 'Fira Code', monospace;
 	background: rgb(46, 71, 76);
 	background: linear-gradient(to top, rgba(74, 115, 123, 1), rgba(105, 155, 174, 1));
+	overflow: hidden;
 }
 
 a {
@@ -137,16 +138,26 @@ header {
 	float: right;
 }
 
-.plangs {
+ul {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	/*grid-template-rows: repeat(3, 1fr);*/
 	grid-auto-flow: row dense;
+}
+
+.plangs {
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.pskills {
+	grid-template-columns: repeat(2, 1fr);
 }
 
 @media only screen and (max-width: 500px) {
 	.plangs {
 		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.pskills {
+		grid-template-columns: repeat(1, 1fr);
 	}
 
 	.portfolio {
@@ -163,13 +174,13 @@ header {
 	}
 }
 
-.plangs > li {
+ul > li {
 	min-width: 125px;
 	list-style: none;
 	line-height: 2;
 }
 
-.plangs > li:before {
+ul > li:before {
 	content: "\2022";
 	font-weight: bold;
 	display: inline-block;
