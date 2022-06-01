@@ -178,6 +178,7 @@ ul > li {
 	min-width: 125px;
 	list-style: none;
 	line-height: 2;
+	margin-left: 1.1em;
 }
 
 ul > li:before {
