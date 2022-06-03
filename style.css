@@ -125,7 +125,7 @@ header {
 	text-decoration: none;
 	color: #000;
 	margin: 1.5em 0 1.5em 0;
-	border: 1px solid #ffffff00;
+	border: 1px solid #ffffff00; /* for layout consistency with dark mode */
 	transition: box-shadow 0.1s, transform 0.1s, background 0.1s;
 	border-radius: 1em;
 }
